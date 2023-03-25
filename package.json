@@ -10,17 +10,17 @@
         "npm": "^9.1.2 || ^8.19.2"
     },
     "scripts": {
-        "dev": "vite --host",
-        "build": "vue-tsc --noEmit && vite build",
-        "preview": "vite preview",
-        "lint:src": "eslint '{scripts,src}/**/*.{js,ts,vue}' --no-error-on-unmatched-pattern",
+        "frontend:dev": "cd frontend && vite --host",
+        "frontend:build": "cd frontend && vue-tsc --noEmit && vite build",
+        "frontend:preview": "vite preview",
+        "frontend:gen:icons": "node frontend/scripts/icons.js",
+        "lint:src": "eslint 'frontend/{scripts,src}/**/*.{js,ts,vue}' --no-error-on-unmatched-pattern",
         "lint:src:fix": "npm run lint:src -- --fix",
-        "lint:i18n": "li18nt 'src/i18n/locales/*.json' --config src/i18n/.li18ntrc",
+        "lint:i18n": "li18nt 'frontend/src/i18n/locales/*.json' --config src/i18n/.li18ntrc",
         "lint:i18n:fix": "npm run lint:i18n -- --fix",
         "lint": "npm run lint:i18n && npm run lint:src",
         "lint:fix": "npm run lint:i18n:fix && npm run lint:src:fix",
-        "test:ci": "npm run build && npm run lint:fix",
-        "gen:icons": "node scripts/icons.js"
+        "test:ci": "npm run build && npm run lint:fix"
     },
     "dependencies": {
         "@popperjs/core": "^2.11.6",

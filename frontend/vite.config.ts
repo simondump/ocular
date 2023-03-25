@@ -6,6 +6,7 @@ import { defineConfig } from 'vite';
 import manifest from './assets/manifest.json';
 
 export default defineConfig({
+  envDir: '..',
   envPrefix: ['OAUTH', 'ACKEE'],
   server: {
     port: 3000
@@ -15,10 +16,5 @@ export default defineConfig({
     'import.meta.env.APP_BUILD_TIMESTAMP': Date.now()
   },
 
-  plugins: [
-    tsconfigPaths({ loose: true }),
-    optimizeCssModules(),
-    vue(),
-    VitePWA({ manifest })
-  ]
+  plugins: [tsconfigPaths({ loose: true }), optimizeCssModules(), vue(), VitePWA({ manifest })]
 });
