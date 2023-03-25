@@ -27,10 +27,11 @@ jobs:
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           ACKEE_HOST: ${{ secrets.ACKEE_HOST }}
           ACKEE_DOMAIN_ID: ${{ secrets.ACKEE_DOMAIN_ID }}
-        run: npm run build
+        run: npm run frontend:build
 
       - name: Pre-Deploy
         run: |
+          cd frontend
           cp dist/index.html dist/404.html
           touch dist/.nojekyll
 
@@ -38,4 +39,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
-          folder: dist
+          folder: frontend/dist

@@ -18,11 +18,13 @@
         "backend:build": "cd backend && tsc --noEmit && vite build",
         "lint:src": "eslint '{frontend,backend}/{scripts,src}/**/*.{js,ts,vue}' --no-error-on-unmatched-pattern",
         "lint:src:fix": "npm run lint:src -- --fix",
-        "lint:i18n": "li18nt 'frontend/src/i18n/locales/*.json' --config src/i18n/.li18ntrc",
+        "lint:i18n": "li18nt 'frontend/src/i18n/locales/*.json' --config frontend/src/i18n/.li18ntrc",
         "lint:i18n:fix": "npm run lint:i18n -- --fix",
         "lint": "npm run lint:i18n && npm run lint:src",
         "lint:fix": "npm run lint:i18n:fix && npm run lint:src:fix",
-        "test:ci": "npm run build && npm run lint:fix"
+        "dev": "concurrently \"npm:frontend:dev\" \"npm:backend:dev\"",
+        "build": "concurrently \"npm:frontend:build\" \"npm:backend:build\"",
+        "test:ci": "concurrently \"npm:build\" \"npmr:lint:fix\""
     },
     "dependencies": {
         "@popperjs/core": "^2.11.6",
@@ -45,6 +47,7 @@
         "@vitejs/plugin-vue": "^4.0.0",
         "@vue/eslint-config-prettier": "^7.0.0",
         "@vue/eslint-config-typescript": "^11.0.2",
+        "concurrently": "^7.6.0",
         "eslint": "^8.32.0",
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "^4.2.1",
