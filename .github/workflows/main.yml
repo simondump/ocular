@@ -1,19 +1,19 @@
 name: CI
 
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+on: [push, pull_request]
 
 jobs:
-  build:
+  frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
+
+      - name: Checkout dir
+        run: cd frontend
+
       - name: Install
         run: npm ci
 
@@ -29,14 +29,19 @@ jobs:
           ACKEE_DOMAIN_ID: ${{ secrets.ACKEE_DOMAIN_ID }}
         run: npm run frontend:build
 
-      - name: Pre-Deploy
-        run: |
-          cd frontend
-          cp dist/index.html dist/404.html
-          touch dist/.nojekyll
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
-        with:
-          branch: gh-pages
-          folder: frontend/dist
+      - name: Checkout dir
+        run: cd backend
+
+      - name: Lint
+        run: cargo fmt --check
+
+      - name: Build
+        run: cargo build --verbose
+
+      - name: Run tests
+        run: cargo test --verbose
