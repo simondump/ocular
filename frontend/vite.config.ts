@@ -8,6 +8,7 @@ import manifest from './assets/manifest.json';
 export default defineConfig({
   envDir: '..',
   envPrefix: ['OAUTH', 'ACKEE'],
+
   server: {
     port: 3000
   },

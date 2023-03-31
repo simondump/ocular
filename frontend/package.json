@@ -1,5 +1,5 @@
 {
-    "name": "ocular",
+    "name": "ocular-frontend",
     "private": true,
     "type": "module",
     "version": "0.0.0",
@@ -10,21 +10,15 @@
         "npm": "^9.1.2 || ^8.19.2"
     },
     "scripts": {
-        "frontend:dev": "cd frontend && vite --host",
-        "frontend:build": "cd frontend && vue-tsc --noEmit && vite build",
-        "frontend:preview": "vite preview",
-        "frontend:gen:icons": "node frontend/scripts/icons.js",
-        "backend:dev": "cd backend && vite --host",
-        "backend:build": "cd backend && tsc --noEmit && vite build",
+        "dev": "vite --host",
+        "build": "cd frontend && vue-tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "gen:icons": "node frontend/scripts/icons.js",
         "lint:src": "eslint '{frontend,backend}/{scripts,src}/**/*.{js,ts,vue}' --no-error-on-unmatched-pattern",
         "lint:src:fix": "npm run lint:src -- --fix",
         "lint:i18n": "li18nt 'frontend/src/i18n/locales/*.json' --config frontend/src/i18n/.li18ntrc",
         "lint:i18n:fix": "npm run lint:i18n -- --fix",
-        "lint": "npm run lint:i18n && npm run lint:src",
-        "lint:fix": "npm run lint:i18n:fix && npm run lint:src:fix",
-        "dev": "concurrently \"npm:frontend:dev\" \"npm:backend:dev\"",
-        "build": "concurrently \"npm:frontend:build\" \"npm:backend:build\"",
-        "test:ci": "concurrently \"npm:build\" \"npmr:lint:fix\""
+        "lint": "npm run lint:i18n && npm run lint:src"
     },
     "dependencies": {
         "@popperjs/core": "^2.11.6",
@@ -47,7 +41,6 @@
         "@vitejs/plugin-vue": "^4.0.0",
         "@vue/eslint-config-prettier": "^7.0.0",
         "@vue/eslint-config-typescript": "^11.0.2",
-        "concurrently": "^7.6.0",
         "eslint": "^8.32.0",
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "^4.2.1",
