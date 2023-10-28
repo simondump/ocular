@@ -5,6 +5,7 @@ on: push
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  OCULAR_GENESIS_HOST: /api
 
 jobs:
 #  build:
@@ -74,4 +75,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            OCULAR_GENESIS_HOST=/genesis
+            OCULAR_GENESIS_HOST=${{ env.OCULAR_GENESIS_HOST }}
