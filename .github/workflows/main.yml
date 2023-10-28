@@ -29,8 +29,6 @@ jobs:
 #        run: pnpm run lint
 #
 #      - name: Build
-#        env:
-#          OCULAR_GENESIS_HOST: /genesis
 #        run: pnpm run build
 #
 #      - name: Upload artifact
@@ -70,6 +68,8 @@ jobs:
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
+        env:
+          OCULAR_GENESIS_HOST: /genesis
         with:
           context: .
           push: true
