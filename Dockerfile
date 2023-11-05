@@ -5,7 +5,7 @@ ARG OCULAR_GENESIS_HOST
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
-RUN corepack enable
+RUN npx pnpm install --global pnpm@8
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml /app/
