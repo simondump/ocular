@@ -1,4 +1,6 @@
-FROM --platform=$BUILDPLATFORM node:22-alpine AS build
+FROM --platform=$BUILDPLATFORM ghcr.io/simonwep/genesis:v1.4.2 AS genesis
+
+FROM --platform=$BUILDPLATFORM node:22-alpine AS frontend
 
 ARG OCULAR_GENESIS_HOST
 ARG OCULAR_BUILD_VERSION
@@ -19,18 +21,23 @@ RUN pnpm install --frozen-lockfile
 COPY . /app
 RUN pnpm run build
 
-FROM busybox:1.37.0-musl
+FROM caddy:2.11-alpine
 
-WORKDIR /home/static
+WORKDIR /
 
-COPY --from=build /app/dist /home/static
-COPY docker/entrypoint.sh /entrypoint.sh
+ARG GENESIS_PORT
+ENV GENESIS_PORT=${GENESIS_PORT}
 
+COPY --from=genesis /app/genesis /usr/local/bin/genesis
+COPY --from=frontend /app/dist /usr/share/caddy
+
+COPY ./docker/Caddyfile /etc/caddy/Caddyfile
+COPY ./docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-RUN echo 'E404:index.html' >> /etc/httpd.conf
 
 EXPOSE 80
 
-HEALTHCHECK CMD wget --no-verbose --tries=1 --spider http://localhost/index.html || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:${GENESIS_PORT}/health || exit 1
 
-CMD ["busybox", "httpd", "-v", "-f"]
+ENTRYPOINT ["/entrypoint.sh"]

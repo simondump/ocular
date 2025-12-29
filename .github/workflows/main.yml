@@ -17,8 +17,8 @@ env:
   HUSKY: 0
 
 jobs:
-  build:
-    name: Build app
+  test:
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -47,14 +47,14 @@ jobs:
       - name: Run eslint
         run: pnpm lint
 
+      - name: Run unit tests
+        run: pnpm test
+
       - name: Build app
         run: pnpm build
 
       - name: Build docs
         run: pnpm docs:build
-
-      - name: Run unit tests
-        run: pnpm test
 
       - name: Install playwright browsers
         run: pnpm exec playwright install --with-deps firefox
@@ -62,11 +62,15 @@ jobs:
       - name: Run e2e tests
         run: pnpm test:e2e
 
+      - name: Set outputs
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
       - name: Build demo app
         run: pnpm build
         env:
           OCULAR_BUILD_VERSION: nightly
-          OCULAR_BUILD_SHA: ${{ github.sha }}
+          OCULAR_BUILD_SHA: ${{ steps.vars.outputs.sha_short }}
           OCULAR_BASE_URL: /ocular/demo/
 
       - name: Upload app build
@@ -96,7 +100,7 @@ jobs:
   publish_docs:
     if: github.ref == 'refs/heads/main'
     name: Publish docs
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -136,7 +140,7 @@ jobs:
   publish_release:
     if: startsWith(github.event.ref, 'refs/tags/v')
     name: Publish new release
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -161,7 +165,7 @@ jobs:
   build_docker:
     if: startsWith(github.event.ref, 'refs/tags/v')
     name: Build and publish docker image
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     permissions:
       contents: read
