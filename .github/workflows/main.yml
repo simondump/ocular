@@ -209,6 +209,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
+          file: docker/Dockerfile
           build-args: |
             OCULAR_GENESIS_HOST=/api
             OCULAR_BUILD_VERSION=${{ github.ref_name }}
