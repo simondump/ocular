@@ -18,7 +18,7 @@ env:
 
 jobs:
   test:
-    name: Run tests
+    name: Build apps and run tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -38,29 +38,29 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # - name: Setup ESLint cache
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: ./.eslintcache
-      #     key: ${{ runner.os }}-eslint-${{ hashFiles('**/pnpm-lock.yaml', '**/eslint.config.mjs') }}
+      - name: Setup ESLint cache
+        uses: actions/cache@v4
+        with:
+          path: ./.eslintcache
+          key: ${{ runner.os }}-eslint-${{ hashFiles('**/pnpm-lock.yaml', '**/eslint.config.mjs') }}
 
-      # - name: Run eslint
-      #   run: pnpm lint
+      - name: Run eslint
+        run: pnpm lint
 
-      # - name: Run unit tests
-      #   run: pnpm test
+      - name: Run unit tests
+        run: pnpm test
 
-      # - name: Build app
-      #   run: pnpm build
+      - name: Build app
+        run: pnpm build
 
       - name: Build docs
         run: pnpm docs:build
 
-      # - name: Install playwright browsers
-      #   run: pnpm exec playwright install --with-deps firefox
+      - name: Install playwright browsers
+        run: pnpm exec playwright install --with-deps firefox
 
-      # - name: Run e2e tests
-      #   run: pnpm test:e2e
+      - name: Run e2e tests
+        run: pnpm test:e2e
 
       - name: Set outputs
         id: vars
@@ -211,6 +211,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           file: docker/Dockerfile
           build-args: |
-            OCULAR_GENESIS_HOST=/api
             OCULAR_BUILD_VERSION=${{ github.ref_name }}
             OCULAR_BUILD_SHA=${{ steps.vars.outputs.sha_short }}
