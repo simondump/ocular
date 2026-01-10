@@ -1,4 +1,4 @@
-name: CI
+name: Main
 
 on: ["push", "pull_request"]
 
@@ -14,6 +14,8 @@ permissions:
 env:
   IMAGE_REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  PNPM_VERSION: 10.27.0
+  NODE_VERSION: 24.12.0
   HUSKY: 0
 
 jobs:
@@ -27,12 +29,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 10.11.0
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -161,6 +163,15 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}
+          labels:
+            org.opencontainers.image.version="${{ github.ref_name }}"
+            org.opencontainers.image.title="Ocular"
+            org.opencontainers.image.description="Open-source budgeting tracking app to track your budget across the years."
+            org.opencontainers.image.url="https://simonwep.github.io/ocular"
+            org.opencontainers.image.documentation="https://simonwep.github.io/ocular"
+            org.opencontainers.image.vendor="Simon Reinisch"
+            org.opencontainers.image.licenses="MIT"
+            org.opencontainers.image.source="https://github.com/simonwep/ocular"
           tags: |
             type=semver,pattern=v{{version}}
             type=semver,pattern=v{{major}}.{{minor}}
@@ -201,6 +212,8 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Extract changes
         id: changelog
