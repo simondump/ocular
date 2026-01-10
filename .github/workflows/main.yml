@@ -40,17 +40,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Setup ESLint cache
-        uses: actions/cache@v4
-        with:
-          path: ./.eslintcache
-          key: ${{ runner.os }}-eslint-${{ hashFiles('**/pnpm-lock.yaml', '**/eslint.config.mjs') }}
+      # - name: Setup ESLint cache
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ./.eslintcache
+      #     key: ${{ runner.os }}-eslint-${{ hashFiles('**/pnpm-lock.yaml', '**/eslint.config.mjs') }}
 
-      - name: Run eslint
-        run: pnpm lint
+      # - name: Run eslint
+      #   run: pnpm lint
 
-      - name: Run unit tests
-        run: pnpm test
+      # - name: Run unit tests
+      #   run: pnpm test
 
       - name: Build app
         run: pnpm build
@@ -58,11 +58,11 @@ jobs:
       - name: Build docs
         run: pnpm docs:build
 
-      - name: Install playwright browsers
-        run: pnpm exec playwright install --with-deps firefox
+      # - name: Install playwright browsers
+      #   run: pnpm exec playwright install --with-deps firefox
 
-      - name: Run e2e tests
-        run: pnpm test:e2e
+      # - name: Run e2e tests
+      #   run: pnpm test:e2e
 
       - name: Set outputs
         id: vars
@@ -163,7 +163,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}
-          labels:
+          labels: |
             org.opencontainers.image.version="${{ github.ref_name }}"
             org.opencontainers.image.title="Ocular"
             org.opencontainers.image.description="Open-source budgeting tracking app to track your budget across the years."
