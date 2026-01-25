@@ -116,45 +116,45 @@ jobs:
     #       path: docs/.vitepress/dist
     #       retention-days: 1
 
-  publish_docs:
-    if: github.ref == 'refs/heads/main'
-    name: Publish docs
-    #needs: [build, test]
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Download docs build
-        uses: actions/download-artifact@v4
-        with:
-          name: docs-build
-          path: docs-build
+  # publish_docs:
+  #   if: github.ref == 'refs/heads/main'
+  #   name: Publish docs
+  #   needs: [build, test]
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     pages: write
+  #     id-token: write
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   steps:
+  #     - name: Download docs build
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: docs-build
+  #         path: docs-build
 
-      - name: Download app build
-        uses: actions/download-artifact@v4
-        with:
-          name: app-build
-          path: app-build
+  #     - name: Download app build
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: app-build
+  #         path: app-build
 
-      - name: Prepare static files
-        run: |
-          mkdir -p pages/demo
-          mv docs-build/* pages/
-          mv app-build/* pages/demo
+  #     - name: Prepare static files
+  #       run: |
+  #         mkdir -p pages/demo
+  #         mv docs-build/* pages/
+  #         mv app-build/* pages/demo
 
-      - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: github-pages
-          path: pages
+  #     - name: Upload pages artifact
+  #       uses: actions/upload-pages-artifact@v3
+  #       with:
+  #         name: github-pages
+  #         path: pages
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4
 
   publish_docker:
     if: startsWith(github.event.ref, 'refs/tags/v')

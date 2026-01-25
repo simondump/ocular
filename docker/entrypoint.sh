@@ -1,14 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 set -eu
 
 # Start backend
+echo 'start backend...'
 '/usr/local/bin/genesis' start &
 BACKEND_PID=$!
 
 # Start Caddy in the background
+echo 'start caddy...'
 caddy run --config /etc/caddy/Caddyfile &
 CADDY_PID=$!
 
+echo 'set up terminate block caddy...'
 terminate() {
   SIGNAL=$1
 
