@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM ghcr.io/simonwep/genesis:v1.4.2 AS genesis
+FROM ghcr.io/simonwep/genesis:v1.4.2 AS genesis
 
 FROM --platform=$BUILDPLATFORM node:24-alpine AS frontend
 
@@ -14,10 +14,11 @@ ENV PATH="$PNPM_HOME:$PATH"
 ENV OCULAR_BUILD_VERSION=${OCULAR_BUILD_VERSION}
 ENV OCULAR_BUILD_SHA=${OCULAR_BUILD_SHA}
 
-RUN npx pnpm install --global pnpm@10.27.0
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml /app/
+
+RUN corepack enable
 RUN pnpm install --frozen-lockfile
 
 COPY . /app
@@ -49,7 +50,6 @@ COPY --from=frontend /app/dist /usr/share/caddy
 COPY ./docker/Caddyfile /etc/caddy/Caddyfile
 COPY ./docker/entrypoint.sh /entrypoint.sh
 
-#RUN apk add --no-cache bash
 RUN chmod +x /entrypoint.sh
 
 EXPOSE 80
