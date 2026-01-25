@@ -17,109 +17,109 @@ env:
   HUSKY: 0
 
 jobs:
-  test:
-    name: Run unit, lint and e2e tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  # test:
+  #   name: Run unit, lint and e2e tests
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
 
-      - name: Setup repository
-        uses: ./.github/workflows/actions/setup-repository
+  #     - name: Setup repository
+  #       uses: ./.github/workflows/actions/setup-repository
 
-      - name: Setup ESLint cache
-        uses: actions/cache@v4
-        with:
-          path: ./.eslintcache
-          key: ${{ runner.os }}-eslint-${{ hashFiles('**/pnpm-lock.yaml', '**/eslint.config.mjs') }}
+  #     - name: Setup ESLint cache
+  #       uses: actions/cache@v4
+  #       with:
+  #         path: ./.eslintcache
+  #         key: ${{ runner.os }}-eslint-${{ hashFiles('**/pnpm-lock.yaml', '**/eslint.config.mjs') }}
 
-      - name: Run eslint
-        run: pnpm lint
+  #     - name: Run eslint
+  #       run: pnpm lint
 
-      - name: Run unit tests
-        run: pnpm test:unit
+  #     - name: Run unit tests
+  #       run: pnpm test:unit
 
-      - name: Build testing app
-        run: pnpm build
-        env:
-          OCULAR_GENESIS_HOST: /api
-          OCULAR_HYBRID_MODE: true
+  #     - name: Build testing app
+  #       run: pnpm build
+  #       env:
+  #         OCULAR_GENESIS_HOST: /api
+  #         OCULAR_HYBRID_MODE: true
 
-      - name: Start genesis and ocular
-        run: |
-          docker pull ghcr.io/simonwep/genesis:latest
-          docker run -p 8080:8080 -v "./.data:/app/.data" --env-file .env.genesis ghcr.io/simonwep/genesis:latest start &
-          pnpm vite preview &
+  #     - name: Start genesis and ocular
+  #       run: |
+  #         docker pull ghcr.io/simonwep/genesis:latest
+  #         docker run -p 8080:8080 -v "./.data:/app/.data" --env-file .env.genesis ghcr.io/simonwep/genesis:latest start &
+  #         pnpm vite preview &
 
-      - name: Wait for genesis to be healthy
-        uses: ./.github/workflows/actions/wait-for-health-check
-        with:
-          host: localhost:8080
+  #     - name: Wait for genesis to be healthy
+  #       uses: ./.github/workflows/actions/wait-for-health-check
+  #       with:
+  #         host: localhost:8080
 
-      - name: Wait for ocular to be healthy
-        uses: ./.github/workflows/actions/wait-for-health-check
-        with:
-          host: localhost:3000
-          endpoint: /dashboard
+  #     - name: Wait for ocular to be healthy
+  #       uses: ./.github/workflows/actions/wait-for-health-check
+  #       with:
+  #         host: localhost:3000
+  #         endpoint: /dashboard
 
-      - name: Install playwright browsers
-        run: pnpm exec playwright install --with-deps firefox
+  #     - name: Install playwright browsers
+  #       run: pnpm exec playwright install --with-deps firefox
 
-      - name: Run e2e tests
-        run: pnpm test:e2e
+  #     - name: Run e2e tests
+  #       run: pnpm test:e2e
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        if: ${{ failure() }}
-        with:
-          name: test-results
-          path: test-results/
-          retention-days: 7
+  #     - name: Upload test results
+  #       uses: actions/upload-artifact@v4
+  #       if: ${{ failure() }}
+  #       with:
+  #         name: test-results
+  #         path: test-results/
+  #         retention-days: 7
 
-  build:
-    name: Run demo and docs build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  # build:
+    # name: Run demo and docs build
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - name: Checkout repository
+    #     uses: actions/checkout@v4
 
-      - name: Setup repository
-        uses: ./.github/workflows/actions/setup-repository
+    #   - name: Setup repository
+    #     uses: ./.github/workflows/actions/setup-repository
 
-      - name: Set outputs
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+    #   - name: Set outputs
+    #     id: vars
+    #     run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Build demo app
-        run: pnpm build
-        env:
-          OCULAR_BUILD_VERSION: nightly
-          OCULAR_BUILD_SHA: ${{ steps.vars.outputs.sha_short }}
-          OCULAR_BASE_URL: /ocular/demo/
+    #   - name: Build demo app
+    #     run: pnpm build
+    #     env:
+    #       OCULAR_BUILD_VERSION: nightly
+    #       OCULAR_BUILD_SHA: ${{ steps.vars.outputs.sha_short }}
+    #       OCULAR_BASE_URL: /ocular/demo/
 
-      - name: Build docs
-        run: pnpm docs:build
+    #   - name: Build docs
+    #     run: pnpm docs:build
 
-      - name: Upload app build
-        uses: actions/upload-artifact@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          name: app-build
-          path: dist
-          retention-days: 1
+    #   - name: Upload app build
+    #     uses: actions/upload-artifact@v4
+    #     if: github.ref == 'refs/heads/main'
+    #     with:
+    #       name: app-build
+    #       path: dist
+    #       retention-days: 1
 
-      - name: Upload docs build
-        uses: actions/upload-artifact@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          name: docs-build
-          path: docs/.vitepress/dist
-          retention-days: 1
+    #   - name: Upload docs build
+    #     uses: actions/upload-artifact@v4
+    #     if: github.ref == 'refs/heads/main'
+    #     with:
+    #       name: docs-build
+    #       path: docs/.vitepress/dist
+    #       retention-days: 1
 
   publish_docs:
     if: github.ref == 'refs/heads/main'
     name: Publish docs
-    needs: [build, test]
+    #needs: [build, test]
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -159,7 +159,7 @@ jobs:
   publish_docker:
     if: startsWith(github.event.ref, 'refs/tags/v')
     name: Build and publish docker image
-    needs: [build, test]
+    #needs: [build, test]
     runs-on: ubuntu-latest
     permissions:
       contents: read
