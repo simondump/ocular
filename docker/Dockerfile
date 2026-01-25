@@ -49,6 +49,7 @@ COPY --from=frontend /app/dist /usr/share/caddy
 COPY ./docker/Caddyfile /etc/caddy/Caddyfile
 COPY ./docker/entrypoint.sh /entrypoint.sh
 
+RUN apk add --no-cache bash
 RUN chmod +x /entrypoint.sh
 
 EXPOSE 80

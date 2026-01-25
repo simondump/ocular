@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -eu
 
 # Start backend
@@ -11,7 +11,7 @@ echo 'start caddy...'
 caddy run --config /etc/caddy/Caddyfile &
 CADDY_PID=$!
 
-echo 'set up terminate block caddy...'
+echo 'set up terminate block...'
 terminate() {
   SIGNAL=$1
 
@@ -23,9 +23,11 @@ terminate() {
   fi
 }
 
+echo 'set up traps...'
 trap 'terminate TERM' TERM
 trap 'terminate INT' INT
 
 # Wait for both processes to exit
+echo 'wait for processes...'
 wait "$BACKEND_PID"
 wait "$CADDY_PID"
