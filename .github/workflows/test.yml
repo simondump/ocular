@@ -1,10 +1,8 @@
-name: Main
+name: Test
 
 on: [push, pull_request]
 
 env:
-  IMAGE_REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
   HUSKY: 0
 
 jobs:
@@ -66,43 +64,3 @@ jobs:
           name: test-results
           path: test-results/
           retention-days: 7
-
-  build:
-    name: Run demo and docs build
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup repository
-        uses: ./.github/workflows/actions/setup-repository
-
-      - name: Set outputs
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-
-      - name: Build demo app
-        run: pnpm build
-        env:
-          OCULAR_BUILD_VERSION: nightly
-          OCULAR_BUILD_SHA: ${{ steps.vars.outputs.sha_short }}
-          OCULAR_BASE_URL: /ocular/demo/
-
-      - name: Build docs
-        run: pnpm docs:build
-
-      - name: Upload app build
-        uses: actions/upload-artifact@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          name: app-build
-          path: dist
-          retention-days: 1
-
-      - name: Upload docs build
-        uses: actions/upload-artifact@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          name: docs-build
-          path: docs/.vitepress/dist
-          retention-days: 1
