@@ -19,7 +19,7 @@ env:
 jobs:
   test:
     name: Run unit, lint and e2e tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -78,7 +78,7 @@ jobs:
 
   build:
     name: Run demo and docs build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -120,7 +120,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     name: Publish docs
     needs: [build, test]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       pages: write
       id-token: write
@@ -160,7 +160,7 @@ jobs:
     if: startsWith(github.event.ref, 'refs/tags/v')
     name: Build and publish docker image
     needs: [build, test]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       packages: write
@@ -213,7 +213,7 @@ jobs:
     if: startsWith(github.event.ref, 'refs/tags/v')
     name: Publish new release
     needs: publish_docker
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
