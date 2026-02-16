@@ -9,11 +9,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
 env:
   HUSKY: 0
 
