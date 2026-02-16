@@ -6,7 +6,7 @@ on:
       - main
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 env:
@@ -40,7 +40,7 @@ jobs:
       - name: Prepare static files
         run: |
           mkdir -p pages/demo
-          mv docs.vitepress/dist/* pages/
+          mv docs/.vitepress/dist/* pages/
           mv dist/* pages/demo
 
       - name: Upload pages artifact
