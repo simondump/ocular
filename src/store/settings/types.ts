@@ -41,4 +41,17 @@ export interface SettingsStateV4 extends MigratableState<4> {
   };
 }
 
-export type SettingsState = SettingsStateV4;
+export interface SettingsStateV5 extends MigratableState<5> {
+  general: {
+    switchNumberSeparators: boolean;
+    monthOffset: number;
+    carryOver: boolean;
+  };
+  appearance: {
+    mode: Mode;
+    theme: Theme;
+    animations: boolean;
+  };
+}
+
+export type SettingsState = SettingsStateV5;

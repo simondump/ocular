@@ -95,7 +95,8 @@
       "firstMonthOfYear": "Primeiro mês do ano",
       "carryOverNetSavings": "Carregar economias líquidas",
       "carryOverNetSavingsInfo": "Se ativado, o saldo final do ano anterior será adicionado ao saldo inicial do ano atual.",
-      "showAnimationsAndTransitions": "Mostrar animações e transições"
+      "showAnimationsAndTransitions": "Mostrar animações e transições",
+      "switchNumberSeparators": "Alternar separadores ({new} ↔ {old})"
     },
     "update": {
       "updateApp": "Atualizar aplicativo"

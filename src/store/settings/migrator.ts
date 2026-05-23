@@ -1,9 +1,9 @@
-import { SettingsStateV1, SettingsStateV2, SettingsStateV3, SettingsStateV4 } from './types';
+import { SettingsStateV1, SettingsStateV2, SettingsStateV3, SettingsStateV4, SettingsStateV5 } from './types';
 import { createMigration, createMigrator } from 'yuppee';
 
-type Versions = SettingsStateV1 | SettingsStateV2 | SettingsStateV3 | SettingsStateV4;
+type Versions = SettingsStateV1 | SettingsStateV2 | SettingsStateV3 | SettingsStateV4 | SettingsStateV5;
 
-export const migrateSettingsState = createMigrator<SettingsStateV4, Versions>({
+export const migrateSettingsState = createMigrator<SettingsStateV5, Versions>({
   init: () => {
     const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -48,6 +48,18 @@ export const migrateSettingsState = createMigrator<SettingsStateV4, Versions>({
         general: {
           ...from.general,
           carryOver: false
+        }
+      })
+    }),
+    createMigration<SettingsStateV4, SettingsStateV5>({
+      from: 4,
+      to: 5,
+      migrate: (from) => ({
+        ...from,
+        version: 5,
+        general: {
+          ...from.general,
+          switchNumberSeparators: false
         }
       })
     })

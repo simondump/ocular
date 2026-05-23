@@ -95,7 +95,8 @@
       "firstMonthOfYear": "Primo mese dell'anno",
       "carryOverNetSavings": "Riporta risparmi netti",
       "carryOverNetSavingsInfo": "Se attivato, il saldo netto di fine anno verrà riportato come saldo iniziale dell'anno successivo.",
-      "showAnimationsAndTransitions": "Mostra animazioni e transizioni"
+      "showAnimationsAndTransitions": "Mostra animazioni e transizioni",
+      "switchNumberSeparators": "Cambia separatori ({new} ↔ {old})"
     },
     "update": {
       "updateApp": "Aggiorna l'app"

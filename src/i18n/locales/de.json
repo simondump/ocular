@@ -95,7 +95,8 @@
       "firstMonthOfYear": "Erster Monat des Jahres",
       "carryOverNetSavings": "Nettoersparnisse übertragen",
       "carryOverNetSavingsInfo": "Wenn diese Option aktiviert ist, werden die Nettoersparnisse des Vorjahres in das neue Jahr übertragen.",
-      "showAnimationsAndTransitions": "Animationen und Übergänge anzeigen"
+      "showAnimationsAndTransitions": "Animationen und Übergänge anzeigen",
+      "switchNumberSeparators": "Trennzeichen wechseln ({new} ↔ {old})"
     },
     "update": {
       "updateApp": "App aktualisieren"

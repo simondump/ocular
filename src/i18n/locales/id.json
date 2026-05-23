@@ -95,7 +95,8 @@
       "firstMonthOfYear": "Bulan pertama dalam tahun",
       "carryOverNetSavings": "Pertahankan saldo tabungan bersih",
       "carryOverNetSavingsInfo": "Jika diaktifkan, saldo tabungan bersih dari tahun sebelumnya akan dibawa ke tahun berikutnya",
-      "showAnimationsAndTransitions": "Tampilkan animasi dan transisi"
+      "showAnimationsAndTransitions": "Tampilkan animasi dan transisi",
+      "switchNumberSeparators": "Ganti pemisah ({new} ↔ {old})"
     },
     "update": {
       "updateApp": "Perbarui aplikasi"

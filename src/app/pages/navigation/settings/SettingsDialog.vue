@@ -33,6 +33,18 @@
       />
 
       <CheckBox
+        :label="
+          t('navigation.settings.switchNumberSeparators', {
+            old: n(1234.56, { switchNumberSeparators: false }),
+            new: n(1234.56, { switchNumberSeparators: true })
+          })
+        "
+        testId="switch-number-separators"
+        :modelValue="settings.general.switchNumberSeparators"
+        @update:modelValue="setSwitchNumberSeparators"
+      />
+
+      <CheckBox
         :label="t('navigation.settings.carryOverNetSavings')"
         :subLabel="t('navigation.settings.carryOverNetSavingsInfo')"
         :modelValue="settings.general.carryOver"
@@ -49,6 +61,7 @@ import { ContextMenuOption } from '@components/base/context-menu/ContextMenu.typ
 import Dialog from '@components/base/dialog/Dialog.vue';
 import Select from '@components/base/select/Select.vue';
 import { useAvailableCurrencyCodes } from '@composables/available-currency-codes/useAvailableCurrencyCodes.ts';
+import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useMonthNames } from '@composables/time/useMonthNames.ts';
 import { AvailableLocale, availableLocales, initialLocale } from '@i18n/index.ts';
 import { useSettingsStore } from '@store/settings';
@@ -65,8 +78,9 @@ defineProps<{
   open: boolean;
 }>();
 
+const { n } = useNumberFormatter();
 const { t, locale } = useI18n();
-const { setMonthOffset, setCarryOver, setAnimations, state: settings } = useSettingsStore();
+const { setMonthOffset, setCarryOver, setAnimations, setSwitchNumberSeparators, state: settings } = useSettingsStore();
 const { changeCurrency, changeLocale, state } = useDataStore();
 const currencyCodes = useAvailableCurrencyCodes(() => [state.currency]);
 const monthNames = useMonthNames();
@@ -112,7 +126,7 @@ const formatNumber = (locale: string, currency: string, currencyDisplay?: Intl.N
 
 <style lang="scss" module>
 .settingsDialog {
-  width: 250px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 12px;

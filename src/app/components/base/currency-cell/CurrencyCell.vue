@@ -15,10 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-import { useDataStore } from '@store/state';
+import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { evalMathExpression } from '@utils/eval-math-expression/evalMathExpression.ts';
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
-import { useI18n } from 'vue-i18n';
 
 const modelValue = defineModel<number>();
 
@@ -37,15 +36,10 @@ const input = useTemplateRef('input');
 const focused = ref(false);
 const innerValue = ref<string>();
 const invalid = ref(false);
-const { state } = useDataStore();
-const { locale, n } = useI18n();
+const { n, separators } = useNumberFormatter();
 
 const value = computed(() =>
-  invalid.value || focused.value
-    ? innerValue.value
-    : modelValue.value
-      ? n(modelValue.value, { key: 'currency', currency: state.currency })
-      : innerValue.value
+  invalid.value || focused.value ? innerValue.value : modelValue.value ? n(modelValue.value) : innerValue.value
 );
 
 const keydown = (e: KeyboardEvent) => {
@@ -74,7 +68,7 @@ watch(focused, (value) => {
   if (value) {
     // Preserve invalid value to allow user to correct it
     if (!invalid.value) {
-      innerValue.value = modelValue.value ? n(modelValue.value) : undefined;
+      innerValue.value = modelValue.value ? n(modelValue.value, { key: 'blank' }) : undefined;
     }
 
     return;
@@ -88,7 +82,7 @@ watch(focused, (value) => {
   }
 
   try {
-    modelValue.value = innerValue.value ? evalMathExpression(innerValue.value, locale.value) : 0;
+    modelValue.value = innerValue.value ? evalMathExpression(innerValue.value, separators.value) : 0;
     invalid.value = false;
   } catch (_) {
     invalid.value = true;

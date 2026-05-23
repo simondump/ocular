@@ -13,7 +13,14 @@
         <div ref="content" :class="[$style.content, contentClass]">
           <div :class="$style.title">
             <h3 v-if="title" :class="$style.text">{{ title }}</h3>
-            <Button v-if="!lock" :class="$style.closeBtn" textual :icon="RiCloseCircleFill" @click="emit('close')" />
+            <Button
+              v-if="!lock"
+              testId="close-dialog"
+              :class="$style.closeBtn"
+              textual
+              :icon="RiCloseCircleFill"
+              @click="emit('close')"
+            />
           </div>
           <slot />
         </div>

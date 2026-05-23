@@ -95,7 +95,8 @@
       "firstMonthOfYear": "Primer mes del año",
       "carryOverNetSavings": "Llevar ahorros netos",
       "carryOverNetSavingsInfo": "Si está habilitado, los ahorros netos se llevarán al siguiente año.",
-      "showAnimationsAndTransitions": "Mostrar animaciones y transiciones"
+      "showAnimationsAndTransitions": "Mostrar animaciones y transiciones",
+      "switchNumberSeparators": "Cambiar separadores ({new} ↔ {old})"
     },
     "update": {
       "updateApp": "Actualizar aplicación"

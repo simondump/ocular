@@ -15,12 +15,12 @@
       <template v-if="startingBalance" #subTitle>
         <RiAddCircleFill v-if="startingBalance > 0" size="16px" />
         <RiIndeterminateCircleFill v-else size="16px" />
-        <span>{{ n(Math.abs(startingBalance), { key: 'currency', currency: state.currency }) }}</span>
+        <span>{{ n(Math.abs(startingBalance)) }}</span>
       </template>
     </SummaryPanel>
 
     <SummaryPanel
-      :subTitle="n(expensePercentage, 'percent')"
+      :subTitle="n(expensePercentage, { key: 'percent' })"
       to="expenses"
       testId="expenses"
       :tooltip="t('page.dashboard.overview.jumpToExpenses', { year: state.activeYear })"
@@ -34,7 +34,7 @@
     />
 
     <SummaryPanel
-      :subTitle="n(endingBalanceSum ? 1 - expensePercentage : 0, 'percent')"
+      :subTitle="n(endingBalanceSum ? 1 - expensePercentage : 0, { key: 'percent' })"
       :values="endingBalance"
       :value="endingBalanceSum"
       color="primary"
@@ -43,7 +43,7 @@
     />
 
     <SummaryPanel
-      :subTitle="n(remainingBalancePercentage, 'percent')"
+      :subTitle="n(remainingBalancePercentage, { key: 'percent' })"
       :alt="
         currentMonthIndex < startOfCycle
           ? t('page.dashboard.overview.yearInThePast')
@@ -64,6 +64,7 @@
 <script lang="ts" setup>
 import SummaryPanel from './SummaryPanel.vue';
 import { useAppSize } from '@composables/app-size/useAppSize.ts';
+import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useMonthNames } from '@composables/time/useMonthNames.ts';
 import { useTime } from '@composables/time/useTime.ts';
 import { useSettingsStore } from '@store/settings';
@@ -86,7 +87,8 @@ const props = defineProps<{
 const monthNames = useMonthNames('long');
 const { state: settings } = useSettingsStore();
 const { state } = useDataStore();
-const { t, n } = useI18n();
+const { n } = useNumberFormatter();
+const { t } = useI18n();
 const time = useTime();
 const appSize = useAppSize();
 

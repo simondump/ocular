@@ -25,23 +25,23 @@
             [$style.last]: groupIndex === flatted.length - 1
           }"
         >
-          {{ n(amount, 'currency') }}
+          {{ n(amount) }}
         </span>
-        <span :class="$style.bold">{{ n(sum(group.totals), 'currency') }}</span>
-        <span :class="$style.bold">{{ n(average(group.totals), 'currency') }}</span>
+        <span :class="$style.bold">{{ n(sum(group.totals)) }}</span>
+        <span :class="$style.bold">{{ n(average(group.totals)) }}</span>
       </template>
 
       <!-- Totals -->
       <template v-if="flatted.length > 1">
         <span :class="$style.bold">{{ t('feature.budgetPane.total') }}</span>
         <span v-for="(month, index) of months" :key="month" :class="$style.bold">
-          {{ n(sum(flatted.map((v) => v.totals[index])), 'currency') }}
+          {{ n(sum(flatted.map((v) => v.totals[index]))) }}
         </span>
         <span :class="$style.underline">
-          {{ n(sum(add(...flatted.map((v) => v.totals))), 'currency') }}
+          {{ n(sum(add(...flatted.map((v) => v.totals)))) }}
         </span>
         <span :class="$style.underline">
-          {{ n(average(add(...flatted.map((v) => v.totals))), 'currency') }}
+          {{ n(average(add(...flatted.map((v) => v.totals)))) }}
         </span>
       </template>
     </div>
@@ -50,6 +50,7 @@
 
 <script lang="ts" setup>
 import SummaryTable from './SummaryTable.vue';
+import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useStateUtils } from '@composables/state-utils/useStateUtils.ts';
 import { useMonthNames } from '@composables/time/useMonthNames.ts';
 import { useSettingsStore } from '@store/settings';
@@ -67,7 +68,8 @@ const props = defineProps<{
   title: string;
 }>();
 
-const { t, n } = useI18n();
+const { t } = useI18n();
+const { n } = useNumberFormatter();
 const { isCurrentMonth } = useStateUtils();
 const { state: settings } = useSettingsStore();
 const months = useMonthNames('long', () => settings.general.monthOffset);

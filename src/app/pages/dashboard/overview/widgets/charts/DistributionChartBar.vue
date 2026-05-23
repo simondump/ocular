@@ -9,6 +9,7 @@ import {
   StackedBarChartType
 } from '@components/charts/stacked-bar-chart/StackedBarChart.types.ts';
 import StackedBarChart from '@components/charts/stacked-bar-chart/StackedBarChart.vue';
+import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
 import { sum } from '@utils/array/array.ts';
@@ -24,7 +25,8 @@ const props = defineProps<{
   totalExpenses: number;
 }>();
 
-const { t, n } = useI18n();
+const { t } = useI18n();
+const { n } = useNumberFormatter();
 const { state } = useDataStore();
 const { state: settings } = useSettingsStore();
 
@@ -32,8 +34,7 @@ const color = (hue: number) => `hsl(${hue}, var(--chart-generic-saturation), var
 
 const format = (value: number, type: StackedBarChartType) =>
   n(value, {
-    style: type === 'absolute' ? 'currency' : 'percent',
-    currency: state.currency,
+    key: type === 'absolute' ? 'currency' : 'percent',
     maximumFractionDigits: 2,
     minimumFractionDigits: 0
   });

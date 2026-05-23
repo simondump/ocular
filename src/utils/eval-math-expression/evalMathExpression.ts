@@ -1,22 +1,12 @@
-export const evalMathExpression = (expression: string, locale = 'en'): number => {
+type Separators = { decimal?: string; group?: string };
+
+export const evalMathExpression = (expression: string, separators: Separators): number => {
   const trimmed = expression.replace(/\s+/g, '');
-  const separators = localeSeparators(locale);
 
   const tokens = tokenize(trimmed, separators);
   const postfix = toPostfix(tokens);
 
   return evaluatePostfix(postfix);
-};
-
-type Separators = { decimal?: string; group?: string };
-
-const localeSeparators = (locale: string): Separators => {
-  const parts = new Intl.NumberFormat(locale).formatToParts(1000.5);
-
-  return {
-    decimal: parts.find((part) => part.type === 'decimal')?.value,
-    group: parts.find((part) => part.type === 'group')?.value
-  };
 };
 
 type Token = {

@@ -95,7 +95,8 @@
       "firstMonthOfYear": "Первый месяц года",
       "carryOverNetSavings": "Перенос чистых сбережений",
       "carryOverNetSavingsInfo": "Если включено, чистые сбережения с предыдущего года будут перенесены на следующий год.",
-      "showAnimationsAndTransitions": "Показывать анимации и переходы"
+      "showAnimationsAndTransitions": "Показывать анимации и переходы",
+      "switchNumberSeparators": "Переключить разделители ({new} ↔ {old})"
     },
     "update": {
       "updateApp": "Обновить приложение"

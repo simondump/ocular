@@ -95,7 +95,8 @@
       "firstMonthOfYear": "Pierwszy miesiąc roku",
       "carryOverNetSavings": "Przeniesienie oszczędności netto",
       "carryOverNetSavingsInfo": "Przeniesienie oszczędności netto z poprzedniego roku do bieżącego roku.",
-      "showAnimationsAndTransitions": "Pokaż animacje i przejścia"
+      "showAnimationsAndTransitions": "Pokaż animacje i przejścia",
+      "switchNumberSeparators": "Przełącz separatory ({new} ↔ {old})"
     },
     "update": {
       "updateApp": "Zaktualizuj aplikację"

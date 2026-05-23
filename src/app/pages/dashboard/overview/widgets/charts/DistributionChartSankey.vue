@@ -10,6 +10,7 @@ import {
   SankeyChartType
 } from '@components/charts/sankey-chart/SankeyChart.types';
 import SankeyChart from '@components/charts/sankey-chart/SankeyChart.vue';
+import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
 import { sum } from '@utils/array/array.ts';
@@ -27,7 +28,8 @@ const props = defineProps<{
 
 const { state: settings } = useSettingsStore();
 const { state } = useDataStore();
-const { n, t } = useI18n();
+const { n } = useNumberFormatter();
+const { t } = useI18n();
 
 const chart = useTemplateRef('chart');
 
@@ -35,8 +37,7 @@ const color = (hue: number) => `hsl(${hue}, var(--chart-generic-saturation), var
 
 const format = (value: number, type: SankeyChartType) =>
   n(value, {
-    style: type === 'absolute' ? 'currency' : 'percent',
-    currency: state.currency,
+    key: type === 'absolute' ? 'currency' : 'percent',
     maximumFractionDigits: 2,
     minimumFractionDigits: 0
   });

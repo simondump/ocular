@@ -26,6 +26,7 @@ export const initialLocale =
 export type AvailableLocale = keyof typeof localeUrls;
 
 const numberFormats: IntlNumberFormat = {
+  blank: {},
   currency: {
     minimumFractionDigits: 0,
     style: 'currency'

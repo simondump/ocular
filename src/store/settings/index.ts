@@ -36,6 +36,10 @@ export const useSettingsStore = createGlobalState(() => {
 
     setCarryOver: (carryOver: boolean): void => {
       state.general.carryOver = carryOver;
+    },
+
+    setSwitchNumberSeparators: (switchSeparators: boolean): void => {
+      state.general.switchNumberSeparators = switchSeparators;
     }
   };
 });
