@@ -59,7 +59,7 @@ export default defineConfig([
         tsconfigRootDir: process.cwd(),
         extraFileExtensions: ['.vue'],
         parser: '@typescript-eslint/parser',
-        project: './tsconfig.json'
+        project: ['./tsconfig.app.json', './tsconfig.node.json']
       },
       globals: {
         process: true
