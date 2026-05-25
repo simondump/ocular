@@ -22,10 +22,10 @@
 import Button from '@components/base/button/Button.vue';
 import { useDemoData } from '@store/state/template/useDemoData.ts';
 import { useStorage } from '@store/storage/useStorage.ts';
-import { ClassNames } from '@utils/types.ts';
 import { RiHandCoinLine, RiMagicFill, RiShoppingBasket2Line } from '@remixicon/vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { ClassNames } from '@utils/types.ts';
 
 const { OCULAR_GENESIS_HOST, OCULAR_HYBRID_MODE } = import.meta.env;
 

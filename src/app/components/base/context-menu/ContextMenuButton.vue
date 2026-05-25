@@ -8,9 +8,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ContextMenuStore, ContextMenuStoreKey } from '@components/base/context-menu/ContextMenu.types';
-import { ClassNames } from '@utils/types.ts';
+import { ContextMenuStoreKey } from '@components/base/context-menu/ContextMenu.types';
 import { computed, inject, useCssModule } from 'vue';
+import type { ContextMenuStore } from '@components/base/context-menu/ContextMenu.types';
+import type { ClassNames } from '@utils/types.ts';
 import type { Component } from 'vue';
 
 const emit = defineEmits<{

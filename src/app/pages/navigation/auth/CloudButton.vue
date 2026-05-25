@@ -18,14 +18,14 @@
 <script lang="ts" setup>
 import LoginDialog from './LoginDialog.vue';
 import Button from '@components/base/button/Button.vue';
-import { Color } from '@composables/theme-styles/useThemeStyles.ts';
 import { useStorage } from '@store/storage/useStorage.ts';
-import { ClassNames } from '@utils/types.ts';
 import { RiCloudLine, RiCloudOffLine, RiRefreshLine, RiSignalWifiErrorLine } from '@remixicon/vue';
 import { watchImmediate } from '@vueuse/core';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
+import type { Color } from '@composables/theme-styles/useThemeStyles.ts';
+import type { ClassNames } from '@utils/types.ts';
 import type { Component } from 'vue';
 
 const { OCULAR_GENESIS_HOST, OCULAR_HYBRID_MODE } = import.meta.env;

@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ClassNames } from '@utils/types.ts';
 import { uuid } from '@utils/uuid/uuid.ts';
 import { computed } from 'vue';
+import type { ClassNames } from '@utils/types.ts';
 
 const props = defineProps<{
   class?: ClassNames;

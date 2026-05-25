@@ -1,9 +1,7 @@
 import { migrateApplicationState } from './migrator';
-import { DataState, DataStates } from './types';
 import { generateBudgetYear } from './utils/generators.ts';
 import { useTime } from '@composables/time/useTime.ts';
-import { AvailableLocale, changeLocale } from '@i18n/index';
-import { ActionOptions, UndoFn } from '@store/state/actions/action.types.ts';
+import { changeLocale } from '@i18n/index';
 import { budgetActions } from '@store/state/actions/budget.actions.ts';
 import { budgetGroupActions } from '@store/state/actions/budgetGroup.actions.ts';
 import { yearActions } from '@store/state/actions/year.actions.ts';
@@ -15,6 +13,9 @@ import { readFile } from '@utils/read-file/readFile.ts';
 import { createGlobalState, watchImmediate } from '@vueuse/core';
 import { computed, reactive, readonly, shallowReactive, shallowRef } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { DataState, DataStates } from './types';
+import type { AvailableLocale } from '@i18n/index';
+import type { ActionOptions, UndoFn } from '@store/state/actions/action.types.ts';
 
 export const useDataStore = createGlobalState(() => {
   const storage = useStorage();

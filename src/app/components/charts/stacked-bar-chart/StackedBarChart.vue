@@ -3,15 +3,17 @@
 </template>
 
 <script lang="ts" setup>
-import { StackedBarChartConfig } from './StackedBarChart.types.ts';
 import EChart from '@components/charts/echart/EChart.vue';
 import { sum } from '@utils/array/array.ts';
-import { ClassNames } from '@utils/types.ts';
-import { BarChart, BarSeriesOption } from 'echarts/charts';
-import { GridComponent, GridComponentOption } from 'echarts/components';
+import { BarChart } from 'echarts/charts';
+import { GridComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { SVGRenderer } from 'echarts/renderers';
 import { computed, useTemplateRef } from 'vue';
+import type { StackedBarChartConfig } from './StackedBarChart.types.ts';
+import type { ClassNames } from '@utils/types.ts';
+import type { BarSeriesOption } from 'echarts/charts';
+import type { GridComponentOption } from 'echarts/components';
 
 const BORDER_RADIUS = 8;
 

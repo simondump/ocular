@@ -1,6 +1,6 @@
-import { DataState } from '../types';
 import { uuid } from '@utils/uuid/uuid.ts';
-import { useI18n } from 'vue-i18n';
+import type { DataState } from '../types';
+import type { useI18n } from 'vue-i18n';
 
 // Module is dynamically loaded so injected composables cannot be used here directly.
 export const generateDemoData = (

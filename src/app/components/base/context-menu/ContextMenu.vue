@@ -32,18 +32,19 @@
 
 <script lang="ts" setup>
 import ContextMenuButton from './ContextMenuButton.vue';
-import {
-  ContextMenuOption,
-  ContextMenuOptionId,
-  ContextMenuStore,
-  ContextMenuStoreKey
-} from '@components/base/context-menu/ContextMenu.types';
+import { ContextMenuStoreKey } from '@components/base/context-menu/ContextMenu.types';
 import { useBrowserType } from '@composables/browser-type/useBrowserType.ts';
 import { useOutOfElementClick } from '@composables/out-of-element-click/useOutOfElementClick.ts';
-import { getAnchorNames, Placement } from '@directives/v-tooltip/vTooltip.ts';
-import { ClassNames } from '@utils/types.ts';
+import { getAnchorNames } from '@directives/v-tooltip/vTooltip.ts';
 import { uuid } from '@utils/uuid/uuid.ts';
 import { computed, provide, ref, useCssModule, useTemplateRef, watch } from 'vue';
+import type {
+  ContextMenuOption,
+  ContextMenuOptionId,
+  ContextMenuStore
+} from '@components/base/context-menu/ContextMenu.types';
+import type { Placement } from '@directives/v-tooltip/vTooltip.ts';
+import type { ClassNames } from '@utils/types.ts';
 
 const emit = defineEmits<{
   select: [option: ContextMenuOption];

@@ -1,5 +1,5 @@
 import { useEventListener, watchImmediate } from '@vueuse/core';
-import { TemplateRef } from 'vue';
+import type { TemplateRef } from 'vue';
 
 export const useScrollShadow = (
   element: TemplateRef<HTMLElement | undefined>,

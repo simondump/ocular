@@ -3,11 +3,6 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  StackedBarChartBlock,
-  StackedBarChartConfig,
-  StackedBarChartType
-} from '@components/charts/stacked-bar-chart/StackedBarChart.types.ts';
 import StackedBarChart from '@components/charts/stacked-bar-chart/StackedBarChart.vue';
 import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useSettingsStore } from '@store/settings';
@@ -16,6 +11,11 @@ import { sum } from '@utils/array/array.ts';
 import { uuid } from '@utils/uuid/uuid.ts';
 import { computed, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type {
+  StackedBarChartBlock,
+  StackedBarChartConfig,
+  StackedBarChartType
+} from '@components/charts/stacked-bar-chart/StackedBarChart.types.ts';
 
 const props = defineProps<{
   highlight?: 'income' | 'expenses';

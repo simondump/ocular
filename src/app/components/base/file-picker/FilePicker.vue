@@ -6,8 +6,8 @@
 
 <script lang="ts" setup>
 import { selectFile } from '@utils/select-file/selectFile.ts';
-import { ClassNames } from '@utils/types.ts';
 import { computed, useCssModule } from 'vue';
+import type { ClassNames } from '@utils/types.ts';
 
 const modelValue = defineModel<File | undefined>();
 

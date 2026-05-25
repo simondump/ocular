@@ -47,9 +47,9 @@ import CurrencyCell from '@components/base/currency-cell/CurrencyCell.vue';
 import { useStateUtils } from '@composables/state-utils/useStateUtils.ts';
 import { useMonthNames } from '@composables/time/useMonthNames.ts';
 import { useDataStore } from '@store/state';
-import { Budget } from '@store/state/types';
-import { DeepReadonly } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { Budget } from '@store/state/types';
+import type { DeepReadonly } from 'vue';
 
 const emit = defineEmits<{
   cellRendered: [InstanceType<typeof CurrencyCell>];

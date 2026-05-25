@@ -1,6 +1,6 @@
-import { ActionOptions } from '@store/state/actions/action.types.ts';
-import { BudgetYear } from '@store/state/types.ts';
 import { generateBudgetYear } from '@store/state/utils/generators.ts';
+import type { ActionOptions } from '@store/state/actions/action.types.ts';
+import type { BudgetYear } from '@store/state/types.ts';
 
 export const yearActions = ({ currentYear, undoFunctions, state, budgetYear }: ActionOptions) => ({
   shiftYears: () => {

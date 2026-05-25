@@ -1,5 +1,5 @@
-import { AvailableLocale } from '@i18n/index';
-import { MigratableState } from 'yuppee';
+import type { AvailableLocale } from '@i18n/index';
+import type { MigratableState } from 'yuppee';
 
 export interface Budget {
   id: string;

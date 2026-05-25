@@ -7,9 +7,10 @@ import { getCssVariables } from './EChart.utils.ts';
 import { useResizeObserver } from '@composables/resize-observer/useResizeObserver.ts';
 import { downloadBlob } from '@utils/download-file/downloadFile.ts';
 import { svgToPNG } from '@utils/svg-to-png/svgToPNG.ts';
-import { ClassNames } from '@utils/types.ts';
-import { EChartsType, init } from 'echarts/core';
+import { init } from 'echarts/core';
 import { computed, onMounted, onUnmounted, shallowRef, useTemplateRef, watch } from 'vue';
+import type { ClassNames } from '@utils/types.ts';
+import type { EChartsType } from 'echarts/core';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const props = defineProps<{

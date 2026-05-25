@@ -5,10 +5,12 @@
 </template>
 
 <script lang="ts" setup>
-import { STEPS_STORE, StepsStore, StepsExposed } from './Steps.types';
+import { STEPS_STORE } from './Steps.types';
 import { remove } from '@utils/array/array.ts';
-import { ClassNames } from '@utils/types.ts';
-import { computed, provide, reactive, Ref, ref } from 'vue';
+import { computed, provide, reactive, ref } from 'vue';
+import type { StepsStore, StepsExposed } from './Steps.types';
+import type { ClassNames } from '@utils/types.ts';
+import type { Ref } from 'vue';
 
 const emit = defineEmits<{
   finish: [];

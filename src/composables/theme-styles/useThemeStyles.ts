@@ -1,4 +1,5 @@
-import { computed, MaybeRefOrGetter, toValue } from 'vue';
+import { computed, toValue } from 'vue';
+import type { MaybeRefOrGetter } from 'vue';
 
 export type Color = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'dimmed';
 

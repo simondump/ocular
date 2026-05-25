@@ -43,10 +43,11 @@ import SummaryPanelChart from './SummaryPanelChart.vue';
 import Currency from '@components/base/currency/Currency.vue';
 import Link from '@components/base/link/Link.vue';
 import { useSquircle } from '@composables/squircle/useSquircle.ts';
-import { Color, useThemeStyles } from '@composables/theme-styles/useThemeStyles.ts';
-import { ClassNames } from '@utils/types.ts';
+import { useThemeStyles } from '@composables/theme-styles/useThemeStyles.ts';
 import { RiCalendar2Line, RiFocus2Fill } from '@remixicon/vue';
 import { computed, useTemplateRef } from 'vue';
+import type { Color } from '@composables/theme-styles/useThemeStyles.ts';
+import type { ClassNames } from '@utils/types.ts';
 
 const emit = defineEmits<{
   pointerEnter: [evt: PointerEvent];

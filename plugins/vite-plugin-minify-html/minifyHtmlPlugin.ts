@@ -1,5 +1,5 @@
 import { minify } from 'html-minifier-terser';
-import { Plugin } from 'vite';
+import type { Plugin } from 'vite';
 
 export const minifyHtmlPlugin = (): Plugin => ({
   name: 'vite-plugin-minify',

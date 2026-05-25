@@ -1,5 +1,6 @@
 import codes from './currencies.json' with { type: 'json' };
-import { computed, MaybeRefOrGetter, toValue } from 'vue';
+import { computed, toValue } from 'vue';
+import type { MaybeRefOrGetter } from 'vue';
 
 const availableCurrencies = new Set(codes);
 const supportedCurrenciesByBrowser = new Set(Intl.supportedValuesOf('currency'));

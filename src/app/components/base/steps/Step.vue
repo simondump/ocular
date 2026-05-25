@@ -5,10 +5,11 @@
 </template>
 
 <script lang="ts" setup>
-import { STEPS_STORE, StepsStore } from './Steps.types';
+import { STEPS_STORE } from './Steps.types';
 import { useIntrinsicSize } from '@composables/intrinsic-size/useIntrinsicSize.ts';
-import { ClassNames } from '@utils/types.ts';
 import { computed, inject, onMounted, onUnmounted, useTemplateRef } from 'vue';
+import type { StepsStore } from './Steps.types';
+import type { ClassNames } from '@utils/types.ts';
 
 const props = defineProps<{
   class?: ClassNames;

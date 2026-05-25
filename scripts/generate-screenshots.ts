@@ -1,7 +1,8 @@
-import { BrowserContext, BrowserContextOptions, chromium, Page } from '@playwright/test';
+import { chromium } from '@playwright/test';
 import { writeFile, rm, mkdir } from 'fs/promises';
 import { cpus } from 'os';
 import { resolve } from 'path';
+import type { BrowserContext, BrowserContextOptions, Page } from '@playwright/test';
 
 type Config = {
   name: string;

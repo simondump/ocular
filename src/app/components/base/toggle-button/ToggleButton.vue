@@ -13,9 +13,9 @@
 </template>
 
 <script lang="ts" setup>
-import { Selectable, SelectableId } from '@components/base/toggle-button/ToggleButton.types';
-import { ClassNames } from '@utils/types.ts';
 import { computed } from 'vue';
+import type { Selectable, SelectableId } from '@components/base/toggle-button/ToggleButton.types';
+import type { ClassNames } from '@utils/types.ts';
 
 const modelValue = defineModel<SelectableId>();
 

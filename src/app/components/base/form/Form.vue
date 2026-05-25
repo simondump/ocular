@@ -15,7 +15,8 @@
 
 <script lang="ts" setup>
 import Button from '@components/base/button/Button.vue';
-import { Component, computed } from 'vue';
+import { computed } from 'vue';
+import type { Component } from 'vue';
 
 const emit = defineEmits<{
   submit: [];

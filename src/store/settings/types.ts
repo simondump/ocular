@@ -1,4 +1,4 @@
-import { MigratableState } from 'yuppee';
+import type { MigratableState } from 'yuppee';
 
 export type Theme = 'light' | 'dark';
 export type Mode = 'normal' | 'privacy';

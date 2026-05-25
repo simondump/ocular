@@ -29,11 +29,11 @@
 <script lang="ts" setup>
 import Button from '@components/base/button/Button.vue';
 import Dialog from '@components/base/dialog/Dialog.vue';
-import { GenesisUser } from '@store/genesis/genesis.sdk.ts';
 import { useStorage } from '@store/storage/useStorage.ts';
 import { RiCloseCircleLine, RiShieldUserLine } from '@remixicon/vue';
 import { ref, toRef, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { GenesisUser } from '@store/genesis/genesis.sdk.ts';
 
 const emit = defineEmits<{
   close: [];

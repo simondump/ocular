@@ -57,18 +57,19 @@
 
 <script lang="ts" setup>
 import CheckBox from '@components/base/check-box/CheckBox.vue';
-import { ContextMenuOption } from '@components/base/context-menu/ContextMenu.types.ts';
 import Dialog from '@components/base/dialog/Dialog.vue';
 import Select from '@components/base/select/Select.vue';
 import { useAvailableCurrencyCodes } from '@composables/available-currency-codes/useAvailableCurrencyCodes.ts';
 import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useMonthNames } from '@composables/time/useMonthNames.ts';
-import { AvailableLocale, availableLocales, initialLocale } from '@i18n/index.ts';
+import { availableLocales, initialLocale } from '@i18n/index.ts';
 import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
 import { RiCheckLine } from '@remixicon/vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { ContextMenuOption } from '@components/base/context-menu/ContextMenu.types.ts';
+import type { AvailableLocale } from '@i18n/index.ts';
 
 const emit = defineEmits<{
   close: [];

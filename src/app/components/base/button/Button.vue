@@ -14,10 +14,11 @@
 </template>
 
 <script lang="ts" setup>
-import { Color, useThemeStyles } from '@composables/theme-styles/useThemeStyles.ts';
-import { Placement } from '@directives/v-tooltip/vTooltip.ts';
-import { ClassNames } from '@utils/types.ts';
+import { useThemeStyles } from '@composables/theme-styles/useThemeStyles.ts';
 import { computed, useCssModule } from 'vue';
+import type { Color } from '@composables/theme-styles/useThemeStyles.ts';
+import type { Placement } from '@directives/v-tooltip/vTooltip.ts';
+import type { ClassNames } from '@utils/types.ts';
 import type { Component } from 'vue';
 
 const emit = defineEmits<{

@@ -54,12 +54,13 @@ import { useNumberFormatter } from '@composables/number-formatter/useNumberForma
 import { useStateUtils } from '@composables/state-utils/useStateUtils.ts';
 import { useMonthNames } from '@composables/time/useMonthNames.ts';
 import { useSettingsStore } from '@store/settings';
-import { BudgetGroup } from '@store/state/types';
 import { flatten } from '@store/state/utils/budgets';
 import { average, sum, add } from '@utils/array/array.ts';
-import { ClassNames } from '@utils/types.ts';
-import { DeepReadonly, computed } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { BudgetGroup } from '@store/state/types';
+import type { ClassNames } from '@utils/types.ts';
+import type { DeepReadonly } from 'vue';
 
 const props = defineProps<{
   class?: ClassNames;

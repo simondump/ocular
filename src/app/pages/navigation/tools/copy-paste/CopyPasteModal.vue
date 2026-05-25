@@ -53,7 +53,6 @@
 
 <script lang="ts" setup>
 import CheckBox from '@components/base/check-box/CheckBox.vue';
-import { ContextMenuOption } from '@components/base/context-menu/ContextMenu.types.ts';
 import Dialog from '@components/base/dialog/Dialog.vue';
 import Form from '@components/base/form/Form.vue';
 import MultiSelect from '@components/base/multi-select/MultiSelect.vue';
@@ -63,6 +62,7 @@ import { useDataStore } from '@store/state';
 import { generateBudgetYear } from '@store/state/utils/generators.ts';
 import { computed, shallowReactive, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { ContextMenuOption } from '@components/base/context-menu/ContextMenu.types.ts';
 
 type FormData = {
   sourceYear?: string;

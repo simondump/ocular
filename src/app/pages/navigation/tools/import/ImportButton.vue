@@ -26,11 +26,11 @@ import Button from '@components/base/button/Button.vue';
 import ContextMenuButton from '@components/base/context-menu/ContextMenuButton.vue';
 import Dialog from '@components/base/dialog/Dialog.vue';
 import Step from '@components/base/steps/Step.vue';
-import { StepsExposed } from '@components/base/steps/Steps.types';
 import Steps from '@components/base/steps/Steps.vue';
 import { RiFileFill, RiGoogleFill, RiUploadCloud2Line } from '@remixicon/vue';
 import { ref, shallowRef, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { StepsExposed } from '@components/base/steps/Steps.types';
 
 const screen = shallowRef<InstanceType<typeof Steps>>();
 const steps = shallowRef<StepsExposed>();

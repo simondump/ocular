@@ -1,5 +1,6 @@
 import { watchImmediate } from '@vueuse/core';
-import { MaybeRefOrGetter, shallowRef, toRef } from 'vue';
+import { shallowRef, toRef } from 'vue';
+import type { MaybeRefOrGetter } from 'vue';
 
 export const useSvgImageElement = (svg: MaybeRefOrGetter<string>) => {
   const value = shallowRef<HTMLImageElement>();

@@ -4,7 +4,6 @@
 </template>
 
 <script lang="ts" setup>
-import { StackedLineChartConfig } from './stacked-line-chart/StackedLineChart.types';
 import StackedLineChart from './stacked-line-chart/StackedLineChart.vue';
 import ChartPlaceholder from '@components/feature/chart-placeholder/ChartPlaceholder.vue';
 import { useSettingsStore } from '@store/settings';
@@ -13,6 +12,7 @@ import { totals } from '@store/state/utils/budgets';
 import { sum } from '@utils/array/array.ts';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { StackedLineChartConfig } from './stacked-line-chart/StackedLineChart.types';
 
 const props = defineProps<{
   highlight?: 'income' | 'expenses';

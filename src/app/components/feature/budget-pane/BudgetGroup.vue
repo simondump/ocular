@@ -79,18 +79,18 @@
 <script lang="ts" setup>
 import Button from '@components/base/button/Button.vue';
 import Currency from '@components/base/currency/Currency.vue';
-import { ReorderEvent } from '@components/base/draggable/Draggable.types.ts';
 import Draggable from '@components/base/draggable/Draggable.vue';
-import { DraggableStore } from '@components/base/draggable/store.ts';
 import TextCell from '@components/base/text-cell/TextCell.vue';
 import BudgetGroupBudgets from '@components/feature/budget-pane/BudgetGroupBudgets.vue';
 import { useDataStore } from '@store/state';
-import { BudgetGroup } from '@store/state/types';
 import { average, sum } from '@utils/array/array.ts';
 import { RiAddCircleLine, RiCloseCircleLine, RiEyeCloseLine, RiEyeLine, RiSkipDownLine } from '@remixicon/vue';
 import { useElementVisibility } from '@vueuse/core';
-import { type Component, computed, DeepReadonly, useTemplateRef, watch } from 'vue';
+import { type Component, computed, useTemplateRef, watch, type DeepReadonly } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { ReorderEvent } from '@components/base/draggable/Draggable.types.ts';
+import type { DraggableStore } from '@components/base/draggable/store.ts';
+import type { BudgetGroup } from '@store/state/types';
 
 const emit = defineEmits<{
   visible: [];

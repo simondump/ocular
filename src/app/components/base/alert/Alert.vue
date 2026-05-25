@@ -6,11 +6,12 @@
 </template>
 
 <script lang="ts" setup>
-import { AlertType } from '@components/base/alert/Alert.types';
-import { Color, useThemeStyles } from '@composables/theme-styles/useThemeStyles.ts';
-import { ClassNames } from '@utils/types.ts';
+import { useThemeStyles } from '@composables/theme-styles/useThemeStyles.ts';
 import { RiCheckLine, RiErrorWarningLine } from '@remixicon/vue';
 import { computed } from 'vue';
+import type { AlertType } from '@components/base/alert/Alert.types';
+import type { Color } from '@composables/theme-styles/useThemeStyles.ts';
+import type { ClassNames } from '@utils/types.ts';
 import type { Component } from 'vue';
 
 const props = defineProps<{

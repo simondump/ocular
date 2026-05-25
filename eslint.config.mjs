@@ -71,6 +71,8 @@ export default defineConfig([
     rules: {
       'no-console': 'error',
       'no-warning-comments': 'error',
+      '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/consistent-type-exports': 'error',
       'vue/no-template-shadow': 'error',
       'vue/attribute-hyphenation': ['error', 'never'],
       'vue/v-on-event-hyphenation': ['error', 'never'],

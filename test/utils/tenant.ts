@@ -1,6 +1,8 @@
-import { createClient, GenesisLoginRequest } from '@store/genesis/genesis.sdk.ts';
-import { Page, expect } from '@playwright/test';
+import { createClient } from '@store/genesis/genesis.sdk.ts';
+import { expect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
+import type { Page } from '@playwright/test';
+import type { GenesisLoginRequest } from '@store/genesis/genesis.sdk.ts';
 
 export const randomUsername = () => `e2e_${Math.random().toString(36).slice(-6)}`;
 

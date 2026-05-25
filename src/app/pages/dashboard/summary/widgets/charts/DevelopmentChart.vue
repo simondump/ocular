@@ -1,10 +1,9 @@
 <template>
   <ChartPlaceholder v-if="isEmpty" :class="classes" />
-  <LineChart v-else :class="[classes, $style.chart]" :data="data" />
+  <LineChart v-else :class="classes" :data="data" />
 </template>
 
 <script lang="ts" setup>
-import { LineChartConfig } from '@components/charts/line-chart/LineChart.types';
 import LineChart from '@components/charts/line-chart/LineChart.vue';
 import ChartPlaceholder from '@components/feature/chart-placeholder/ChartPlaceholder.vue';
 import { useMonthNames } from '@composables/time/useMonthNames.ts';
@@ -12,9 +11,10 @@ import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
 import { totals } from '@store/state/utils/budgets';
 import { aggregate, subtract, sum } from '@utils/array/array.ts';
-import { ClassNames } from '@utils/types.ts';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { LineChartConfig } from '@components/charts/line-chart/LineChart.types';
+import type { ClassNames } from '@utils/types.ts';
 
 const props = defineProps<{
   class?: ClassNames;
@@ -53,9 +53,3 @@ const data = computed((): LineChartConfig => {
   };
 });
 </script>
-
-<style lang="scss" module>
-.chart {
-  min-height: 300px;
-}
-</style>

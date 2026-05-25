@@ -32,11 +32,12 @@
 </template>
 
 <script lang="ts" setup>
-import { DropOrder, ReorderEvent } from './Draggable.types';
-import { DraggableStore, store } from './store';
+import { store } from './store';
 import Button from '@components/base/button/Button.vue';
 import { RiDraggable, RiSkipDownLine, RiSkipUpLine } from '@remixicon/vue';
 import { computed, ref, useTemplateRef, watch } from 'vue';
+import type { DropOrder, ReorderEvent } from './Draggable.types';
+import type { DraggableStore } from './store';
 import type { Component } from 'vue';
 
 const emit = defineEmits<{

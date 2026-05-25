@@ -1,6 +1,7 @@
 import { useMemoize } from '@vueuse/core';
-import { computed, ComputedRef, MaybeRefOrGetter, toValue } from 'vue';
+import { computed, toValue } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { ComputedRef, MaybeRefOrGetter } from 'vue';
 
 export const useMonthNames = useMemoize(
   (

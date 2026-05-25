@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 
 // Service worker are blocked during testing, so we need to ignore them
 const IGNORE_REGEX = /playwright|service-worker|intlify/i;

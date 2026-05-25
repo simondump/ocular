@@ -1,6 +1,6 @@
-import { ActionOptions } from '@store/state/actions/action.types.ts';
 import { clear, moveInArrays, remove } from '@utils/array/array.ts';
 import { uuid } from '@utils/uuid/uuid.ts';
+import type { ActionOptions } from '@store/state/actions/action.types.ts';
 
 export const budgetActions = ({ getBudgetGroup, budgetGroups, getBudget, undoFunctions }: ActionOptions) => ({
   getBudget: (id: string) => {

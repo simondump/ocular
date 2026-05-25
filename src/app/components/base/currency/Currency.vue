@@ -16,8 +16,8 @@
 import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
-import { ClassNames } from '@utils/types.ts';
 import { computed } from 'vue';
+import type { ClassNames } from '@utils/types.ts';
 
 const props = defineProps<{
   value?: number;

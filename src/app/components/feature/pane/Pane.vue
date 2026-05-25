@@ -21,8 +21,8 @@
 <script lang="ts" setup>
 import Currency from '@components/base/currency/Currency.vue';
 import { useScrollShadow } from '@composables/scroll-shadow/useScrollShadow.ts';
-import { ClassNames } from '@utils/types.ts';
 import { computed, useTemplateRef } from 'vue';
+import type { ClassNames } from '@utils/types.ts';
 
 const props = defineProps<{
   class?: ClassNames;

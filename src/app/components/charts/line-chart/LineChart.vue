@@ -3,21 +3,16 @@
 </template>
 
 <script lang="ts" setup>
-import { LineChartConfig } from './LineChart.types';
 import EChart from '@components/charts/echart/EChart.vue';
-import { ClassNames } from '@utils/types.ts';
-import { LineChart, LineSeriesOption } from 'echarts/charts';
-import {
-  GridComponent,
-  GridComponentOption,
-  LegendComponent,
-  LegendComponentOption,
-  TooltipComponent,
-  TooltipComponentOption
-} from 'echarts/components';
+import { LineChart } from 'echarts/charts';
+import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { SVGRenderer } from 'echarts/renderers';
 import { computed } from 'vue';
+import type { LineChartConfig } from './LineChart.types';
+import type { ClassNames } from '@utils/types.ts';
+import type { LineSeriesOption } from 'echarts/charts';
+import type { GridComponentOption, LegendComponentOption, TooltipComponentOption } from 'echarts/components';
 
 echarts.use([SVGRenderer, LineChart, LegendComponent, GridComponent, TooltipComponent]);
 

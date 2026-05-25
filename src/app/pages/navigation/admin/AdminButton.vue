@@ -23,10 +23,10 @@ import Button from '@components/base/button/Button.vue';
 import ContextMenu from '@components/base/context-menu/ContextMenu.vue';
 import { useAppSize } from '@composables/app-size/useAppSize.ts';
 import { useStorage } from '@store/storage/useStorage.ts';
-import { ClassNames } from '@utils/types.ts';
 import { RiShieldFlashLine } from '@remixicon/vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { ClassNames } from '@utils/types.ts';
 
 const props = defineProps<{
   class: ClassNames;

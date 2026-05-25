@@ -1,4 +1,5 @@
-import { ref, Ref, TemplateRef, watch } from 'vue';
+import { ref, watch } from 'vue';
+import type { Ref, TemplateRef } from 'vue';
 
 export const useResizeObserver = (el: TemplateRef<HTMLElement | undefined>): Ref<DOMRect> => {
   const rect = ref<DOMRect>(new DOMRect());

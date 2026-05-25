@@ -1,4 +1,5 @@
-import { MaybeRefOrGetter, toValue, computed } from 'vue';
+import { toValue, computed } from 'vue';
+import type { MaybeRefOrGetter } from 'vue';
 
 export const useSquircleCorner = (
   size: MaybeRefOrGetter<number>,

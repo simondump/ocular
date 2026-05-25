@@ -1,6 +1,6 @@
 import { totals, flatten, sumOfBudgetGroups, sumOfBudgetYear } from './budgets';
-import { BudgetGroup, BudgetYear } from '../types';
 import { it, expect } from 'vitest';
+import type { BudgetGroup, BudgetYear } from '../types';
 
 const budgetGroups: BudgetGroup[] = [
   {

@@ -3,12 +3,6 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  SankeyChartConfig,
-  SankeyChartLabel,
-  SankeyChartLink,
-  SankeyChartType
-} from '@components/charts/sankey-chart/SankeyChart.types';
 import SankeyChart from '@components/charts/sankey-chart/SankeyChart.vue';
 import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useSettingsStore } from '@store/settings';
@@ -17,6 +11,12 @@ import { sum } from '@utils/array/array.ts';
 import { uuid } from '@utils/uuid/uuid.ts';
 import { computed, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type {
+  SankeyChartConfig,
+  SankeyChartLabel,
+  SankeyChartLink,
+  SankeyChartType
+} from '@components/charts/sankey-chart/SankeyChart.types';
 
 const props = defineProps<{
   highlight?: 'income' | 'expenses';

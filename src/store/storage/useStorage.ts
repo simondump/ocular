@@ -1,8 +1,9 @@
-import { createClient, GenesisUser } from '@store/genesis/genesis.sdk.ts';
+import { createClient } from '@store/genesis/genesis.sdk.ts';
 import { debounce } from '@utils/debounce/debounce.ts';
 import { createGlobalState, watchImmediate } from '@vueuse/core';
 import { computed, nextTick, readonly, ref, shallowReactive, shallowRef, watch } from 'vue';
-import { MigratableState } from 'yuppee';
+import type { GenesisUser } from '@store/genesis/genesis.sdk.ts';
+import type { MigratableState } from 'yuppee';
 
 const { OCULAR_GENESIS_HOST } = import.meta.env;
 

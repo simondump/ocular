@@ -1,6 +1,7 @@
 import { useResizeObserver } from '@composables//resize-observer/useResizeObserver';
 import { useMutationObserver } from '@composables/mutation-observer/useMutationObserver';
-import { ref, Ref, TemplateRef, watch } from 'vue';
+import { ref, watch } from 'vue';
+import type { Ref, TemplateRef } from 'vue';
 
 export const useIntrinsicSize = (el: TemplateRef<HTMLElement | undefined>): Ref<DOMRect> => {
   const rect = ref<DOMRect>(new DOMRect());

@@ -1,4 +1,5 @@
-import { computed, MaybeRefOrGetter, onScopeDispose, toRef, watch } from 'vue';
+import { computed, onScopeDispose, toRef, watch } from 'vue';
+import type { MaybeRefOrGetter } from 'vue';
 
 type UseKeyboardNavigationOptions = {
   inputs: HTMLInputElement[];

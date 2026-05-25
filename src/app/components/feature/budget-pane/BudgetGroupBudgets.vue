@@ -51,19 +51,20 @@
 <script lang="ts" setup>
 import Button from '@components/base/button/Button.vue';
 import Currency from '@components/base/currency/Currency.vue';
-import CurrencyCell from '@components/base/currency-cell/CurrencyCell.vue';
-import { DropOrder, ReorderEvent } from '@components/base/draggable/Draggable.types';
 import Draggable from '@components/base/draggable/Draggable.vue';
-import { DraggableStore } from '@components/base/draggable/store';
 import TextCell from '@components/base/text-cell/TextCell.vue';
 import BudgetGroupBudgetCell from '@components/feature/budget-pane/BudgetGroupBudgetCell.vue';
 import { useOrderedTemplateRefs } from '@composables/ordered-template-refs/useOrderedTemplateRefs.ts';
 import { useDataStore } from '@store/state';
-import { Budget } from '@store/state/types';
 import { average, sum } from '@utils/array/array.ts';
 import { RiCloseCircleLine } from '@remixicon/vue';
-import { computed, DeepReadonly, shallowRef } from 'vue';
+import { computed, shallowRef } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type CurrencyCell from '@components/base/currency-cell/CurrencyCell.vue';
+import type { DropOrder, ReorderEvent } from '@components/base/draggable/Draggable.types';
+import type { DraggableStore } from '@components/base/draggable/store';
+import type { Budget } from '@store/state/types';
+import type { DeepReadonly } from 'vue';
 
 defineProps<{
   budgets: DeepReadonly<Budget[]>;

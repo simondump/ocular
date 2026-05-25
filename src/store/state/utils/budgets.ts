@@ -1,6 +1,6 @@
-import { BudgetGroup, BudgetYear } from '../types';
 import { sum } from '@utils/array/array.ts';
-import { DeepReadonly } from 'vue';
+import type { BudgetGroup, BudgetYear } from '../types';
+import type { DeepReadonly } from 'vue';
 
 export const totals = (groups: DeepReadonly<BudgetGroup[]>): number[] => {
   const totals = new Array(12).fill(0);

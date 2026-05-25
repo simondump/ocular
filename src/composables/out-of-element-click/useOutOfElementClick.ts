@@ -1,5 +1,6 @@
 import { arrayify } from '@utils/array/array.ts';
-import { onMounted, onUnmounted, TemplateRef } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
+import type { TemplateRef } from 'vue';
 
 export const useOutOfElementClick = (
   valid: TemplateRef<HTMLElement | undefined>[] | TemplateRef<HTMLElement | undefined>,

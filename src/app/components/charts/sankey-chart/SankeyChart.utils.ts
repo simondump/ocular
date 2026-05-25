@@ -1,4 +1,4 @@
-import { SankeyChartConfig, SankeyChartType, SankeyChartLink } from './SankeyChart.types.ts';
+import type { SankeyChartConfig, SankeyChartType, SankeyChartLink } from './SankeyChart.types.ts';
 
 export type TransformedSankeyChartLabel = {
   id: string;

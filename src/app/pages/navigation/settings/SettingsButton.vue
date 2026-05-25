@@ -17,10 +17,10 @@
 import SettingsDialog from '@app/pages/navigation/settings/SettingsDialog.vue';
 import Button from '@components/base/button/Button.vue';
 import { useShowWinterFeatures } from '@composables/winter-features/useShowWinterFeatures.ts';
-import { ClassNames } from '@utils/types.ts';
 import { RiSettings4Line, RiSnowflakeLine } from '@remixicon/vue';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { ClassNames } from '@utils/types.ts';
 
 const props = defineProps<{
   class?: ClassNames;

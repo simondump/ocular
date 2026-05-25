@@ -6,9 +6,9 @@
 import SnowFlakesWorker from './SnowFlakes.worker.ts?worker';
 import { useSvgImageElement } from '@components/base/snow-flakes/SnowFlakes.utils.ts';
 import { useCssVarValue } from '@composables/css-var-value/useCssVarValue.ts';
-import { ClassNames } from '@utils/types.ts';
 import { useElementSize, watchDebounced } from '@vueuse/core';
 import { computed, onUnmounted, shallowRef, useTemplateRef, watch } from 'vue';
+import type { ClassNames } from '@utils/types.ts';
 
 const SNOWFLAKE_SIZE = 24;
 const SNOWFLAKE_MIN_DISTANCE = 2;

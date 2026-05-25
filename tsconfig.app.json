@@ -10,7 +10,7 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "verbatimModuleSyntax": false /* Compatibility */,
+    "verbatimModuleSyntax": true,
 
     /* Vue */
     "types": ["node", "vite/client", "vite-plugin-pwa/client"],

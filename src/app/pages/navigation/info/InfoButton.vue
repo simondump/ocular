@@ -16,10 +16,10 @@
 <script lang="ts" setup>
 import InfoDialog from './InfoDialog.vue';
 import Button from '@components/base/button/Button.vue';
-import { ClassNames } from '@utils/types.ts';
 import { RiInformationLine } from '@remixicon/vue';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { ClassNames } from '@utils/types.ts';
 
 const props = defineProps<{
   class?: ClassNames;

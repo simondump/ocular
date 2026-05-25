@@ -33,11 +33,11 @@ import CheckBox from '@components/base/check-box/CheckBox.vue';
 import Dialog from '@components/base/dialog/Dialog.vue';
 import Form from '@components/base/form/Form.vue';
 import TextField from '@components/base/text-field/TextField.vue';
-import { GenesisNewUser } from '@store/genesis/genesis.sdk.ts';
 import { useStorage } from '@store/storage/useStorage.ts';
 import { RiUserAddLine } from '@remixicon/vue';
 import { reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { GenesisNewUser } from '@store/genesis/genesis.sdk.ts';
 
 const emit = defineEmits<{
   close: [];

@@ -12,9 +12,9 @@
 
 <script lang="ts" setup>
 import Button from '@components/base/button/Button.vue';
-import { ClassNames } from '@utils/types.ts';
 import { RiArrowLeftSLine } from '@remixicon/vue';
 import { computed } from 'vue';
+import type { ClassNames } from '@utils/types.ts';
 
 const props = defineProps<{
   class?: ClassNames;

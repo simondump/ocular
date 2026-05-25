@@ -16,12 +16,12 @@
 
 <script lang="ts" setup>
 import { useStorage } from '@store/storage/useStorage.ts';
-import { ClassNames } from '@utils/types.ts';
 import { RiCloudOffFill, RiGlobalOffFill, RiLoader2Fill, RiRefreshFill } from '@remixicon/vue';
 import { useLocalStorage } from '@vueuse/core';
 import { useRegisterSW } from 'virtual:pwa-register/vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { ClassNames } from '@utils/types.ts';
 import type { Component } from 'vue';
 
 type Status = {

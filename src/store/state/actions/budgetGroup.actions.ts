@@ -1,7 +1,7 @@
-import { ActionOptions } from '@store/state/actions/action.types.ts';
-import { BudgetGroup } from '@store/state/types.ts';
 import { clear, moveInArrays, remove } from '@utils/array/array.ts';
 import { uuid } from '@utils/uuid/uuid.ts';
+import type { ActionOptions } from '@store/state/actions/action.types.ts';
+import type { BudgetGroup } from '@store/state/types.ts';
 
 type Group = 'expenses' | 'income';
 

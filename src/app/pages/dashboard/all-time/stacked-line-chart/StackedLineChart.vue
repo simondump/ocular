@@ -3,25 +3,23 @@
 </template>
 
 <script lang="ts" setup>
-import { StackedLineChartConfig } from './StackedLineChart.types';
 import EChart from '@components/charts/echart/EChart.vue';
 import { useAppSize } from '@composables/app-size/useAppSize.ts';
 import { rollingAverage } from '@utils/array/array.ts';
-import { ClassNames } from '@utils/types.ts';
-import { LineChart, LineSeriesOption } from 'echarts/charts';
-import {
-  GridComponent,
-  LegendComponent,
-  TooltipComponent,
-  DataZoomComponent,
+import { LineChart } from 'echarts/charts';
+import { GridComponent, LegendComponent, TooltipComponent, DataZoomComponent } from 'echarts/components';
+import * as echarts from 'echarts/core';
+import { SVGRenderer } from 'echarts/renderers';
+import { computed } from 'vue';
+import type { StackedLineChartConfig } from './StackedLineChart.types';
+import type { ClassNames } from '@utils/types.ts';
+import type { LineSeriesOption } from 'echarts/charts';
+import type {
   TooltipComponentOption,
   GridComponentOption,
   LegendComponentOption,
   DataZoomComponentOption
 } from 'echarts/components';
-import * as echarts from 'echarts/core';
-import { SVGRenderer } from 'echarts/renderers';
-import { computed } from 'vue';
 
 echarts.use([LineChart, SVGRenderer, LegendComponent, GridComponent, TooltipComponent, DataZoomComponent]);
 

@@ -1,4 +1,4 @@
-import { Plugin } from 'vite';
+import type { Plugin } from 'vite';
 
 export const minifyJsonPlugin = (): Plugin => ({
   name: 'vite-plugin-minify-json',

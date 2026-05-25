@@ -61,10 +61,10 @@ import ComponentTransition from '@components/misc/component-transition/Component
 import { useAppSize } from '@composables/app-size/useAppSize.ts';
 import { useSquircle } from '@composables/squircle/useSquircle.ts';
 import { useStorage } from '@store/storage/useStorage.ts';
-import { ClassNames } from '@utils/types.ts';
 import { RiDonutChartLine, RiHandCoinLine, RiShoppingBagLine } from '@remixicon/vue';
 import { computed, useCssModule, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
+import type { ClassNames } from '@utils/types.ts';
 import type { Component } from 'vue';
 
 type FrameButton = {

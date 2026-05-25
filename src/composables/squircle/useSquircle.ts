@@ -1,5 +1,6 @@
 import { useElementSize } from '@vueuse/core';
-import { MaybeRefOrGetter, toValue, TemplateRef, watch } from 'vue';
+import { toValue, watch } from 'vue';
+import type { MaybeRefOrGetter, TemplateRef } from 'vue';
 
 export const useSquircle = (el: TemplateRef<HTMLElement | null>, curvature: MaybeRefOrGetter<number>) => {
   const { width, height } = useElementSize(el, new DOMRect(), { box: 'border-box' });

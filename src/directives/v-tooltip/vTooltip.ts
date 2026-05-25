@@ -1,7 +1,8 @@
 import styles from './vTooltip.module.scss';
 import { useAppSize } from '@composables/app-size/useAppSize.ts';
 import { uuid } from '@utils/uuid/uuid.ts';
-import { Directive, unref } from 'vue';
+import { unref } from 'vue';
+import type { Directive } from 'vue';
 
 export type Placement = 'top' | 'right' | 'bottom' | 'left';
 

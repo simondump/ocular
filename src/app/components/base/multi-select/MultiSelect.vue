@@ -20,10 +20,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ContextMenuOption, ContextMenuOptionId } from '@components/base/context-menu/ContextMenu.types.ts';
 import Select from '@components/base/select/Select.vue';
 import { RiCloseLine } from '@remixicon/vue';
 import { computed, ref, watch } from 'vue';
+import type { ContextMenuOption, ContextMenuOptionId } from '@components/base/context-menu/ContextMenu.types.ts';
 
 const modelValue = defineModel<ContextMenuOptionId[]>();
 

@@ -20,9 +20,9 @@
 </template>
 
 <script lang="ts" setup>
-import { CellMenuAction } from '@components/base/cell-menu/CellMenu.types';
 import { uuid } from '@utils/uuid/uuid.ts';
 import { ref, watch } from 'vue';
+import type { CellMenuAction } from '@components/base/cell-menu/CellMenu.types';
 
 defineProps<{
   actions: () => CellMenuAction[];

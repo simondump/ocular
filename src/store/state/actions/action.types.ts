@@ -1,5 +1,5 @@
-import { Budget, BudgetGroup, BudgetYear, DataState } from '@store/state/types.ts';
-import { ComputedRef, Ref } from 'vue';
+import type { Budget, BudgetGroup, BudgetYear, DataState } from '@store/state/types.ts';
+import type { ComputedRef, Ref } from 'vue';
 
 export type UndoFn = () => void;
 

@@ -1,11 +1,11 @@
 import { minifyHtmlPlugin } from './plugins/vite-plugin-minify-html/minifyHtmlPlugin.ts';
 import { minifyJsonPlugin } from './plugins/vite-plugin-minify-json/minifyJsonPlugin.ts';
 import vue from '@vitejs/plugin-vue';
-import { ProxyOptions } from 'vite';
 import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
 import { VitePWA } from 'vite-plugin-pwa';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
+import type { ProxyOptions } from 'vite';
 
 const base = process.env.OCULAR_BASE_URL ?? '/';
 

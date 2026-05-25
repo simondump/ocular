@@ -1,6 +1,6 @@
 import { initialLocale } from '@i18n/index';
-import { DataStateV1, DataStateV2, DataStateV3 } from '@store/state/types';
 import { createMigration, createMigrator } from 'yuppee';
+import type { DataStateV1, DataStateV2, DataStateV3 } from '@store/state/types';
 
 type Versions = DataStateV1 | DataStateV2 | DataStateV3;
 
