@@ -148,6 +148,15 @@
         "allTimeIncome": "Receita pelos Anos",
         "allTimeExpenses": "Despesas pelos Anos",
         "allTimeSavings": "Economias pelos Anos"
+      },
+      "compare": {
+        "title": "Comparar anos",
+        "compareThisYear": "Comparar este ano",
+        "againstThisYear": "com este ano",
+        "minimumTwoYearsRequired": "Você deve ter pelo menos dois anos de dados para comparar.",
+        "upComparedTo": "„{name}“ aumentou {percent} (+{absolute}) em comparação com {year}",
+        "downComparedTo": "„{name}“ diminuiu {percent} (-{absolute}) em comparação com {year}",
+        "sameAs": "„{name}“ igual a {year} ({absolute})"
       }
     }
   },

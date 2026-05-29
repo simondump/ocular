@@ -148,6 +148,15 @@
         "allTimeIncome": "Reddito Totale",
         "allTimeExpenses": "Spese Totali",
         "allTimeSavings": "Risparmio Totale"
+      },
+      "compare": {
+        "title": "Confronta anni",
+        "compareThisYear": "Confronta quest'anno",
+        "againstThisYear": "con quest'anno",
+        "minimumTwoYearsRequired": "Devi avere almeno due anni di dati da confrontare.",
+        "upComparedTo": "„{name}“ in aumento del {percent} (+{absolute}) rispetto al {year}",
+        "downComparedTo": "„{name}“ in calo del {percent} (-{absolute}) rispetto al {year}",
+        "sameAs": "„{name}“ uguale al {year} ({absolute})"
       }
     }
   },

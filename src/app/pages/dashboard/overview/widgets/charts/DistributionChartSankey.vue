@@ -7,6 +7,7 @@ import SankeyChart from '@components/charts/sankey-chart/SankeyChart.vue';
 import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
+import { sumOfBudgets } from '@store/state/utils/budgets.ts';
 import { sum } from '@utils/array/array.ts';
 import { uuid } from '@utils/uuid/uuid.ts';
 import { computed, useTemplateRef } from 'vue';
@@ -92,7 +93,7 @@ const data = computed((): SankeyChartConfig => {
   }
 
   for (const group of state.income) {
-    const total = sum(group.budgets.flatMap((v) => v.values));
+    const total = sumOfBudgets(group.budgets);
 
     if (!total) {
       continue;
@@ -138,7 +139,7 @@ const data = computed((): SankeyChartConfig => {
   }
 
   for (const group of state.expenses) {
-    const total = sum(group.budgets.flatMap((v) => v.values));
+    const total = sumOfBudgets(group.budgets);
 
     if (!total) {
       continue;

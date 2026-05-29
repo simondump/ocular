@@ -81,5 +81,9 @@ defineExpose({ download });
 .chart {
   width: 100%;
   height: 100%;
+
+  // force shrink in grids
+  min-height: 0;
+  min-width: 0;
 }
 </style>

@@ -148,6 +148,15 @@
         "allTimeIncome": "Доходы за все время",
         "allTimeExpenses": "Расходы за все время",
         "allTimeSavings": "Сбережения за все время"
+      },
+      "compare": {
+        "title": "Сравнить годы",
+        "compareThisYear": "Сравнить этот год",
+        "againstThisYear": "с этим годом",
+        "minimumTwoYearsRequired": "Для сравнения необходимо как минимум два года данных.",
+        "upComparedTo": "„{name}“ вырос на {percent} (+{absolute}) по сравнению с {year}",
+        "downComparedTo": "„{name}“ снизился на {percent} (-{absolute}) по сравнению с {year}",
+        "sameAs": "„{name}“ такой же, как в {year} ({absolute})"
       }
     }
   },

@@ -5,7 +5,7 @@
       <RiHandCoinLine :class="$style.icon" />
     </div>
 
-    <span>{{ t('feature.chartPlaceholder.placeholder') }}</span>
+    <span>{{ placeholder ?? t('feature.chartPlaceholder.placeholder') }}</span>
 
     <Button
       v-if="(!OCULAR_GENESIS_HOST || OCULAR_HYBRID_MODE) && status === 'idle'"
@@ -31,6 +31,7 @@ const { OCULAR_GENESIS_HOST, OCULAR_HYBRID_MODE } = import.meta.env;
 
 const props = defineProps<{
   class?: ClassNames;
+  placeholder?: string;
 }>();
 
 const { t } = useI18n();

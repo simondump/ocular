@@ -148,6 +148,15 @@
         "allTimeIncome": "Celkový Příjmy",
         "allTimeExpenses": "Celkový Výdaje",
         "allTimeSavings": "Celkový Úspory"
+      },
+      "compare": {
+        "title": "Porovnat roky",
+        "compareThisYear": "Porovnat tento rok",
+        "againstThisYear": "s tímto rokem",
+        "minimumTwoYearsRequired": "Pro porovnání musíte mít alespoň dva roky dat.",
+        "upComparedTo": "„{name}“ vzrostlo o {percent} (+{absolute}) ve srovnání s rokem {year}",
+        "downComparedTo": "„{name}“ kleslo o {percent} (-{absolute}) ve srovnání s rokem {year}",
+        "sameAs": "„{name}“ stejné jako v roce {year} ({absolute})"
       }
     }
   },

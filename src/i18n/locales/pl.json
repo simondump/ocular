@@ -148,6 +148,15 @@
         "allTimeIncome": "Całkowite dochody",
         "allTimeExpenses": "Całkowite wydatki",
         "allTimeSavings": "Całkowite oszczędności"
+      },
+      "compare": {
+        "title": "Porównaj lata",
+        "compareThisYear": "Porównaj ten rok",
+        "againstThisYear": "z tym rokiem",
+        "minimumTwoYearsRequired": "Musisz mieć co najmniej dwa lata danych do porównania.",
+        "upComparedTo": "„{name}“ wzrost o {percent} (+{absolute}) w porównaniu do {year}",
+        "downComparedTo": "„{name}“ spadek o {percent} (-{absolute}) w porównaniu do {year}",
+        "sameAs": "„{name}“ takie samo jak w {year} ({absolute})"
       }
     }
   },

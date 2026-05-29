@@ -148,6 +148,15 @@
         "allTimeIncome": "累計収入",
         "allTimeExpenses": "累計支出",
         "allTimeSavings": "累計貯蓄"
+      },
+      "compare": {
+        "title": "年を比較",
+        "compareThisYear": "今年を比較",
+        "againstThisYear": "今年と比較",
+        "minimumTwoYearsRequired": "比較するには少なくとも2年分のデータが必要です。",
+        "upComparedTo": "「{name}」は{year}年と比較して{percent}増加（+{absolute}）",
+        "downComparedTo": "「{name}」は{year}年と比較して{percent}減少（-{absolute}）",
+        "sameAs": "「{name}」は{year}年と同じ（{absolute}）"
       }
     }
   },

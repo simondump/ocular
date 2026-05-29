@@ -7,7 +7,7 @@ import StackedBarChart from '@components/charts/stacked-bar-chart/StackedBarChar
 import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
-import { sum } from '@utils/array/array.ts';
+import { sumOfBudgets } from '@store/state/utils/budgets.ts';
 import { uuid } from '@utils/uuid/uuid.ts';
 import { computed, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -43,7 +43,7 @@ const chart = useTemplateRef('chart');
 
 const data = computed((): StackedBarChartConfig => {
   const incomeBlocks: StackedBarChartBlock[] = state.income.map((v) => {
-    const value = sum(v.budgets.flatMap((v) => v.values));
+    const value = sumOfBudgets(v.budgets);
 
     return {
       id: v.id,
@@ -67,7 +67,7 @@ const data = computed((): StackedBarChartConfig => {
   }
 
   const expenseBlocks: StackedBarChartBlock[] = state.expenses.map((v) => {
-    const value = sum(v.budgets.flatMap((v) => v.values));
+    const value = sumOfBudgets(v.budgets);
 
     return {
       id: v.id,

@@ -148,6 +148,15 @@
         "allTimeIncome": "All Time Income",
         "allTimeExpenses": "All Time Expenses",
         "allTimeSavings": "All Time Savings"
+      },
+      "compare": {
+        "title": "Compare years",
+        "compareThisYear": "Compare this year",
+        "againstThisYear": "against this year",
+        "minimumTwoYearsRequired": "You must have at least two years of data to compare.",
+        "upComparedTo": "\"{name}\" up {percent} (+{absolute}) compared to {year}",
+        "downComparedTo": "\"{name}\" down {percent} (-{absolute}) compared to {year}",
+        "sameAs": "\"{name}\" same as in {year} ({absolute})"
       }
     }
   },

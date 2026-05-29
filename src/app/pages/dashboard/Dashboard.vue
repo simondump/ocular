@@ -40,6 +40,17 @@
           :tooltip="t('page.dashboard.summary.title')"
           tooltipPosition="bottom"
         />
+        <Link
+          v-if="appSize !== 'mobile'"
+          textual
+          size="s"
+          color="primary"
+          to="dashboard.compare"
+          testId="view-compare"
+          :icon="RiArrowLeftRightLine"
+          :tooltip="t('page.dashboard.compare.title')"
+          tooltipPosition="bottom"
+        />
         <span :class="$style.divider" />
         <Link
           v-if="appSize !== 'mobile'"
@@ -71,7 +82,7 @@ import ComponentTransition from '@components/misc/component-transition/Component
 import { useAppSize } from '@composables/app-size/useAppSize.ts';
 import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
-import { RiCalendar2Line, RiDashboardLine, RiEarthLine, RiTableLine } from '@remixicon/vue';
+import { RiArrowLeftRightLine, RiCalendar2Line, RiDashboardLine, RiEarthLine, RiTableLine } from '@remixicon/vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 

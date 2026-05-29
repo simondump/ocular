@@ -148,6 +148,15 @@
         "allTimeIncome": "Pemasukan keseluruhan",
         "allTimeExpenses": "Pengeluaran keseluruhan",
         "allTimeSavings": "Tabungan keseluruhan"
+      },
+      "compare": {
+        "title": "Bandingkan tahun",
+        "compareThisYear": "Bandingkan tahun ini",
+        "againstThisYear": "dengan tahun ini",
+        "minimumTwoYearsRequired": "Anda harus memiliki setidaknya dua tahun data untuk dibandingkan.",
+        "upComparedTo": "„{name}“ naik {percent} (+{absolute}) dibandingkan {year}",
+        "downComparedTo": "„{name}“ turun {percent} (-{absolute}) dibandingkan {year}",
+        "sameAs": "„{name}“ sama seperti pada {year} ({absolute})"
       }
     }
   },

@@ -33,8 +33,11 @@ export const flatten = (groups: DeepReadonly<BudgetGroup[]>): FlattedBudgetGroup
     return { ...group, totals } as FlattedBudgetGroup;
   });
 
-export const sumOfBudgetGroups = (groups: DeepReadonly<BudgetGroup[]>): number =>
-  sum(groups.flatMap((v) => v.budgets.flatMap((v) => v.values)));
+export const sumOfBudgets = (budgets: DeepReadonly<BudgetGroup['budgets']>): number =>
+  sum(budgets.flatMap((v) => v.values));
 
-export const sumOfBudgetYear = ({ income, expenses }: BudgetYear) =>
+export const sumOfBudgetGroups = (groups: DeepReadonly<BudgetGroup[]>): number =>
+  sum(groups.flatMap((v) => sumOfBudgets(v.budgets)));
+
+export const sumOfBudgetYear = ({ income, expenses }: DeepReadonly<BudgetYear>) =>
   sumOfBudgetGroups(income) - sumOfBudgetGroups(expenses);

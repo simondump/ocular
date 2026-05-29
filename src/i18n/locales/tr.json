@@ -148,6 +148,15 @@
         "allTimeIncome": "Tüm Zamanların Gelirleri",
         "allTimeExpenses": "Tüm Zamanların Giderleri",
         "allTimeSavings": "Tüm Zamanların Tasarrufları"
+      },
+      "compare": {
+        "title": "Yılları karşılaştır",
+        "compareThisYear": "Bu yılı karşılaştır",
+        "againstThisYear": "bu yıla karşı",
+        "minimumTwoYearsRequired": "Karşılaştırma yapmak için en az iki yıllık veriye sahip olmalısınız.",
+        "upComparedTo": "„{name}“, {year} yılına kıyasla {percent} arttı (+{absolute})",
+        "downComparedTo": "„{name}“, {year} yılına kıyasla {percent} azaldı (-{absolute})",
+        "sameAs": "„{name}“, {year} yılı ile aynı ({absolute})"
       }
     }
   },

@@ -148,6 +148,15 @@
         "allTimeIncome": "Ingresos de todos los tiempos",
         "allTimeExpenses": "Gastos de todos los tiempos",
         "allTimeSavings": "Ahorros de todos los tiempos"
+      },
+      "compare": {
+        "title": "Comparar años",
+        "compareThisYear": "Comparar este año",
+        "againstThisYear": "con este año",
+        "minimumTwoYearsRequired": "Debes tener al menos dos años de datos para comparar.",
+        "upComparedTo": "„{name}“ subió {percent} (+{absolute}) en comparación con {year}",
+        "downComparedTo": "„{name}“ bajó {percent} (-{absolute}) en comparación con {year}",
+        "sameAs": "„{name}“ igual que en {year} ({absolute})"
       }
     }
   },

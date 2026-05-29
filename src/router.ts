@@ -23,6 +23,11 @@ export const router = createRouter({
           path: 'all-time',
           name: 'dashboard.allTime',
           component: () => import('./app/pages/dashboard/all-time/AllTime.vue')
+        },
+        {
+          path: 'compare',
+          name: 'dashboard.compare',
+          component: () => import('./app/pages/dashboard/compare/Compare.vue')
         }
       ]
     },

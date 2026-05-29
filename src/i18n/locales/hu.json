@@ -148,6 +148,15 @@
         "allTimeIncome": "Teljes időszak bevételei",
         "allTimeExpenses": "Teljes időszak kiadásai",
         "allTimeSavings": "Teljes időszak megtakarításai"
+      },
+      "compare": {
+        "title": "Évek összehasonlítása",
+        "compareThisYear": "Az idei év összehasonlítása",
+        "againstThisYear": "ezzel az évvel",
+        "minimumTwoYearsRequired": "Az összehasonlításhoz legalább két évnyi adat szükséges.",
+        "upComparedTo": "„{name}“ {percent} növekedés (+{absolute}) a(z) {year} évhez képest",
+        "downComparedTo": "„{name}“ {percent} csökkenés (-{absolute}) a(z) {year} évhez képest",
+        "sameAs": "„{name}“ ugyanannyi, mint {year} évben ({absolute})"
       }
     }
   },
