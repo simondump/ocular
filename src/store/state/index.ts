@@ -84,6 +84,9 @@ export const useDataStore = createGlobalState(() => {
       get income() {
         return budgetYear.value.income;
       },
+      get endingBalance() {
+        return sumOfBudgetYear(budgetYear.value);
+      },
       get overallBalance() {
         return sum(state.years.filter((year) => year.year < currentYear.value).map(sumOfBudgetYear));
       },

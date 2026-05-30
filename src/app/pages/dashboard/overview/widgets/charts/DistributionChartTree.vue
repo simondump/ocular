@@ -32,7 +32,8 @@ const chart = useTemplateRef('chart');
 const budgetGroupToNode = (type: 'income' | 'expenses'): TreeMapChartNode => {
   const groups = [...state[type]];
   const total = sumOfBudgetGroups(groups) + (settings.general.carryOver ? (state.overallBalance ?? 0) : 0);
-  const endingBalance = state.overallBalance ?? 0;
+  const overallBalance = state.overallBalance ?? 0;
+  const deficitAmount = -state.endingBalance;
 
   const baseColor = type === 'income' ? 'var(--c-success)' : 'var(--c-warning)';
   const baseTransparency =
@@ -40,8 +41,8 @@ const budgetGroupToNode = (type: 'income' | 'expenses'): TreeMapChartNode => {
       ? 50
       : 100;
 
-  const color = (transparency: number) =>
-    `color-mix(in srgb, ${baseColor} ${Math.max(transparency * baseTransparency, 5)}%, transparent)`;
+  const color = (transparency: number, color = baseColor) =>
+    `color-mix(in srgb, ${color} ${Math.max(transparency * baseTransparency, 5)}%, transparent)`;
 
   const label = (total: number, value: number) =>
     props.percentages ? n(value / total, { key: 'percent' }) : props.averages ? n(value / 12) : n(value);
@@ -69,23 +70,34 @@ const budgetGroupToNode = (type: 'income' | 'expenses'): TreeMapChartNode => {
   };
 
   if (settings.general.carryOver) {
-    if (type === 'income' && endingBalance > 0) {
-      data.value += endingBalance;
+    if (type === 'income' && overallBalance > 0) {
+      data.value += overallBalance;
       data.children!.push({
         id: uuid(),
-        value: endingBalance,
+        value: overallBalance,
         name: t('page.dashboard.overview.surplus'),
-        color: color(endingBalance / total),
-        label: `${t('page.dashboard.overview.surplus')} (${label(data.value, endingBalance)})`
+        color: color(overallBalance / total),
+        label: `${t('page.dashboard.overview.surplus')} (${label(data.value, overallBalance)})`
       });
-    } else if (type === 'expenses' && endingBalance < 0) {
-      data.value += endingBalance;
+    } else if (type === 'expenses' && overallBalance < 0) {
+      data.value += overallBalance;
       data.children!.push({
         id: uuid(),
-        value: endingBalance,
+        value: overallBalance,
         name: t('page.dashboard.overview.deficit'),
-        color: color(endingBalance / total),
-        label: `${t('page.dashboard.overview.deficit')} (${label(data.value, endingBalance)})`
+        color: color(overallBalance / total),
+        label: `${t('page.dashboard.overview.deficit')} (${label(data.value, overallBalance)})`
+      });
+    }
+  } else if (deficitAmount) {
+    if (type === 'income' && deficitAmount > 0) {
+      data.value += deficitAmount;
+      data.children!.push({
+        id: uuid(),
+        value: deficitAmount,
+        name: t('page.dashboard.overview.deficit'),
+        color: color(deficitAmount / total, 'var(--c-danger)'),
+        label: `${t('page.dashboard.overview.deficit')} (${label(data.value, deficitAmount)})`
       });
     }
   }

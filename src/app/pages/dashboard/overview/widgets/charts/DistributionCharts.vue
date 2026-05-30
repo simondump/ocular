@@ -85,8 +85,7 @@ import ChartPlaceholder from '@components/feature/chart-placeholder/ChartPlaceho
 import ComponentTransition from '@components/misc/component-transition/ComponentTransition.vue';
 import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
-import { sumOfBudgetGroups, totals } from '@store/state/utils/budgets.ts';
-import { sum } from '@utils/array/array.ts';
+import { sumOfBudgetGroups } from '@store/state/utils/budgets.ts';
 import {
   RiBarChartHorizontalLine,
   RiBubbleChartLine,
@@ -123,7 +122,7 @@ const totalIncome = computed(() =>
     : sumOfBudgetGroups(state.income)
 );
 
-const totalExpenses = computed(() => sum(totals(state.expenses)));
+const totalExpenses = computed(() => sumOfBudgetGroups(state.expenses));
 
 const isEmpty = computed(() => !totalIncome.value || !totalExpenses.value);
 

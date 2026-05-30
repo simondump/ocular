@@ -44,7 +44,8 @@ const format = (value: number, type: SankeyChartType) =>
   });
 
 const data = computed((): SankeyChartConfig => {
-  const endingBalance = state.overallBalance ?? 0;
+  const overallBalance = state.overallBalance ?? 0;
+  const deficitAmount = -state.endingBalance;
   const labels: SankeyChartLabel[] = [];
   const links: SankeyChartLink[] = [];
 
@@ -57,21 +58,21 @@ const data = computed((): SankeyChartConfig => {
 
   labels.push(income);
 
-  if (settings.general.carryOver && endingBalance > 0) {
+  if (settings.general.carryOver && overallBalance > 0) {
     const carryOverSource = uuid();
     const carryOverTarget = uuid();
 
     labels.push({
       id: carryOverSource,
       formatter: (value, type) => `${t('page.dashboard.overview.lastYear')} (${format(value, type)})`,
-      color: color(60 + 60 * (endingBalance / props.totalIncome)),
+      color: color(60 + 60 * (overallBalance / props.totalIncome)),
       muted: props.highlight === 'expenses'
     });
 
     labels.push({
       id: carryOverTarget,
       formatter: (value, type) => `${t('page.dashboard.overview.surplus')} (${format(value, type)})`,
-      color: color(60 + 60 * (endingBalance / props.totalIncome)),
+      color: color(60 + 60 * (overallBalance / props.totalIncome)),
       muted: props.highlight === 'expenses'
     });
 
@@ -79,7 +80,7 @@ const data = computed((): SankeyChartConfig => {
       id: uuid(),
       target: carryOverTarget,
       source: carryOverSource,
-      value: endingBalance,
+      value: overallBalance,
       muted: props.highlight === 'expenses'
     });
 
@@ -87,7 +88,42 @@ const data = computed((): SankeyChartConfig => {
       id: uuid(),
       target: income.id,
       source: carryOverTarget,
-      value: endingBalance,
+      value: overallBalance,
+      muted: props.highlight === 'expenses'
+    });
+  }
+
+  if (!settings.general.carryOver && deficitAmount > 0) {
+    const carryOverSource = uuid();
+    const carryOverTarget = uuid();
+
+    labels.push({
+      id: carryOverSource,
+      formatter: (value, type) => `${t('page.dashboard.overview.deficit')} (${format(value, type)})`,
+      color: color(60 * (1 - deficitAmount / props.totalIncome)),
+      muted: props.highlight === 'expenses'
+    });
+
+    labels.push({
+      id: carryOverTarget,
+      formatter: (value, type) => `${t('page.dashboard.overview.deficit')} (${format(value, type)})`,
+      color: color(60 * (1 - deficitAmount / props.totalIncome)),
+      muted: props.highlight === 'expenses'
+    });
+
+    links.push({
+      id: uuid(),
+      target: carryOverTarget,
+      source: carryOverSource,
+      value: deficitAmount,
+      muted: props.highlight === 'expenses'
+    });
+
+    links.push({
+      id: uuid(),
+      target: income.id,
+      source: carryOverTarget,
+      value: deficitAmount,
       muted: props.highlight === 'expenses'
     });
   }
@@ -185,21 +221,21 @@ const data = computed((): SankeyChartConfig => {
     }
   }
 
-  if (settings.general.carryOver && endingBalance < 0) {
+  if (settings.general.carryOver && overallBalance < 0) {
     const deficitSource = uuid();
     const deficitTarget = uuid();
 
     labels.push({
       id: deficitSource,
       formatter: (value, type) => `${t('page.dashboard.overview.lastYear')} (${format(value, type)})`,
-      color: color(60 + 60 * (-endingBalance / props.totalIncome)),
+      color: color(60 + 60 * (-overallBalance / props.totalIncome)),
       muted: props.highlight === 'income'
     });
 
     labels.push({
       id: deficitTarget,
       formatter: (value, type) => `${t('page.dashboard.overview.deficit')} (${format(value, type)})`,
-      color: color(60 + 60 * (-endingBalance / props.totalIncome)),
+      color: color(60 + 60 * (-overallBalance / props.totalIncome)),
       muted: props.highlight === 'income',
       align: 'left'
     });
@@ -208,7 +244,7 @@ const data = computed((): SankeyChartConfig => {
       id: uuid(),
       target: deficitSource,
       source: income.id,
-      value: -endingBalance,
+      value: -overallBalance,
       muted: props.highlight === 'income'
     });
 
@@ -216,7 +252,7 @@ const data = computed((): SankeyChartConfig => {
       id: uuid(),
       target: deficitTarget,
       source: deficitSource,
-      value: -endingBalance,
+      value: -overallBalance,
       muted: props.highlight === 'income'
     });
   }
