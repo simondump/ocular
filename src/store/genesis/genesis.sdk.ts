@@ -51,10 +51,11 @@ export const createClient = (opt: GenesisStoreOptions) => {
       const data = hasContent ? await processed.json() : undefined;
 
       if (response.ok) {
-        return { error: undefined, data };
+        return { error: undefined, data: data as TData };
       }
 
-      const { error: message, ...rest } = data;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { error: message, ...rest } = data as any;
       const status = response.status;
       const error = { message, status, ...rest };
 

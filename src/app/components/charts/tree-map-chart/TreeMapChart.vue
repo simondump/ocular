@@ -89,7 +89,6 @@ const options = computed(
           }
         ],
         label: {
-          formatter: ({ name, value }) => `${name} (${props.data.formatter(Number(value))})`,
           textBorderWidth: 0,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           fontWeight: 'var(--font-weight-l)' as any,
