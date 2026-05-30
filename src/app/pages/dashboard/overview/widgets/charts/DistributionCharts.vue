@@ -3,8 +3,9 @@
     <ChartPlaceholder v-if="isEmpty" />
 
     <ComponentTransition v-else>
-      <DistributionChartBar v-if="showBarChart" ref="chart" v-bind="chartProps" />
-      <DistributionChartSankey v-else ref="chart" v-bind="chartProps" />
+      <DistributionChartSankey v-if="chartType === 'sankey'" ref="chart" v-bind="chartProps" />
+      <DistributionChartTree v-else-if="chartType === 'tree'" ref="chart" v-bind="chartProps" />
+      <DistributionChartBar v-else ref="chart" v-bind="chartProps" />
     </ComponentTransition>
 
     <div :class="$style.controls">
@@ -28,13 +29,17 @@
         :iconOn="RiPercentFill"
         :iconOff="RiNumber9"
       />
-      <Switch
-        v-model="showBarChart"
+
+      <MultiSwitch
+        v-model="chartType"
         v-tooltip.top="t('page.dashboard.overview.toggleChartType')"
-        testId="show-bar-chart"
+        testId="switch-chart-type"
         :class="$style.switch"
-        :iconOn="RiBarChartHorizontalLine"
-        :iconOff="RiGitMergeLine"
+        :options="[
+          { id: 'sankey', icon: RiGitMergeLine },
+          { id: 'tree', icon: RiBubbleChartLine },
+          { id: 'bar', icon: RiBarChartHorizontalLine }
+        ]"
       />
 
       <ContextMenu position="top">
@@ -70,9 +75,11 @@
 <script lang="ts" setup>
 import DistributionChartBar from '@app/pages/dashboard/overview/widgets/charts/DistributionChartBar.vue';
 import DistributionChartSankey from '@app/pages/dashboard/overview/widgets/charts/DistributionChartSankey.vue';
+import DistributionChartTree from '@app/pages/dashboard/overview/widgets/charts/DistributionChartTree.vue';
 import Button from '@components/base/button/Button.vue';
 import ContextMenu from '@components/base/context-menu/ContextMenu.vue';
 import ContextMenuButton from '@components/base/context-menu/ContextMenuButton.vue';
+import MultiSwitch from '@components/base/multi-switch/MultiSwitch.vue';
 import Switch from '@components/base/switch/Switch.vue';
 import ChartPlaceholder from '@components/feature/chart-placeholder/ChartPlaceholder.vue';
 import ComponentTransition from '@components/misc/component-transition/ComponentTransition.vue';
@@ -82,6 +89,7 @@ import { sumOfBudgetGroups, totals } from '@store/state/utils/budgets.ts';
 import { sum } from '@utils/array/array.ts';
 import {
   RiBarChartHorizontalLine,
+  RiBubbleChartLine,
   RiCalendar2Line,
   RiDownload2Line,
   RiFunctions,
@@ -105,7 +113,7 @@ const { state: settings } = useSettingsStore();
 const { state } = useDataStore();
 
 const chart = useTemplateRef('chart');
-const showBarChart = useLocalStorage('dashboard/show-bar-chart', false);
+const chartType = useLocalStorage('dashboard/chart-type', 'sankey');
 const showAverages = useLocalStorage('dashboard/show-averages', false);
 const showPercentages = useLocalStorage('dashboard/show-percentages', false);
 
@@ -128,9 +136,8 @@ const chartProps = computed(() => ({
 }));
 
 const fileName = computed(() => {
-  const chartType = showBarChart.value ? 'bar-chart' : 'sankey-chart';
   const percentageType = showPercentages.value ? 'percentages' : 'absolute';
-  return `${chartType}-${percentageType}`;
+  return `${chartType.value}-${percentageType}`;
 });
 </script>
 
@@ -158,6 +165,5 @@ const fileName = computed(() => {
 
 .switch {
   height: 100%;
-  width: 50px;
 }
 </style>

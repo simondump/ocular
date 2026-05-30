@@ -49,6 +49,7 @@ const budgetGroupToNode = (
           id: uuid(),
           name: budget.name,
           value: budgetTotal,
+          label: `${budget.name} (${n(budgetTotal)})`,
           color: colorMapper(budgetTotal / total)
         };
       })
@@ -92,7 +93,6 @@ const data = computed((): TreeMapChartConfig => {
   };
 
   return {
-    formatter: n,
     tooltip: (id) => {
       const { node, type } = resolve((v) => v.id === id) ?? {};
       if (!node || !type) return undefined;

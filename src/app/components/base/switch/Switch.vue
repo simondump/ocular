@@ -49,7 +49,7 @@ defineProps<{
 .icons {
   position: absolute;
   display: flex;
-  width: calc(100% - 6px);
+  gap: 2px;
   justify-content: space-between;
 
   .icon {
