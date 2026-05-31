@@ -41,6 +41,7 @@ const expenses = computed(() => totals(state.expenses));
 
 .chart {
   flex-grow: 1;
+  height: 300px;
   min-height: 300px;
 }
 </style>

@@ -1,11 +1,14 @@
 <template>
-  <ChartPlaceholder v-if="isEmpty" :class="classes" />
-  <LineChart v-else :class="classes" :data="data" />
+  <div :class="[$style.developmentChart, classes]">
+    <ChartPlaceholder v-if="isEmpty" />
+    <LineChart v-else :data="data" />
+  </div>
 </template>
 
 <script lang="ts" setup>
 import LineChart from '@components/charts/line-chart/LineChart.vue';
 import ChartPlaceholder from '@components/feature/chart-placeholder/ChartPlaceholder.vue';
+import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useMonthNames } from '@composables/time/useMonthNames.ts';
 import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
@@ -22,7 +25,8 @@ const props = defineProps<{
 
 const { state } = useDataStore();
 const { state: settings } = useSettingsStore();
-const { t, locale } = useI18n();
+const { n } = useNumberFormatter();
+const { t } = useI18n();
 const months = useMonthNames('long', () => settings.general.monthOffset);
 
 const classes = computed(() => props.class);
@@ -36,15 +40,13 @@ const data = computed((): LineChartConfig => {
   const income = totals(state.income);
   const expenses = totals(state.expenses);
   const endingBalance = aggregate(subtract(income, expenses));
-  const formatter = new Intl.NumberFormat(locale.value, {
-    style: 'currency',
-    currency: state.currency,
-    maximumFractionDigits: 0
-  });
+
+  // valueFormatter isn't reactive, but we have to capture dependencies of n
+  void n(0);
 
   return {
+    valueFormatter: (value) => n(value),
     labels: months.value,
-    valueFormatter: (value) => formatter.format(value),
     series: [
       { name: t('page.dashboard.income'), color: 'var(--c-success-light-dimmed)', data: income },
       { name: t('page.dashboard.expenses'), color: 'var(--c-danger-light-dimmed)', data: expenses },
@@ -53,3 +55,9 @@ const data = computed((): LineChartConfig => {
   };
 });
 </script>
+
+<style lang="scss" module>
+.developmentChart {
+  display: flex;
+}
+</style>

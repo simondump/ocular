@@ -6,6 +6,7 @@
 <script lang="ts" setup>
 import StackedLineChart from './stacked-line-chart/StackedLineChart.vue';
 import ChartPlaceholder from '@components/feature/chart-placeholder/ChartPlaceholder.vue';
+import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useSettingsStore } from '@store/settings';
 import { useDataStore } from '@store/state';
 import { totals } from '@store/state/utils/budgets';
@@ -19,7 +20,8 @@ const props = defineProps<{
   percentages?: boolean;
 }>();
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
+const { n } = useNumberFormatter();
 const { state } = useDataStore();
 const { state: settings } = useSettingsStore();
 
@@ -30,14 +32,12 @@ const isEmpty = computed(() => !sum(allIncomes.value) && !sum(allExpenses.value)
 
 const data = computed((): StackedLineChartConfig => {
   const totalMonths = state.years.length * 12;
-  const formatter = new Intl.NumberFormat(locale.value, {
-    style: 'currency',
-    currency: state.currency,
-    maximumFractionDigits: 0
-  });
+
+  // valueFormatter isn't reactive, but we have to capture dependencies of n
+  void n(0);
 
   return {
-    valueFormatter: (value) => formatter.format(value),
+    valueFormatter: (value) => n(value),
     labels: Array.from({ length: totalMonths }, (_, i) => {
       const year = Math.floor(i / 12) + state.years[0].year;
       const month = ((i + settings.general.monthOffset) % 12) + 1;

@@ -71,11 +71,3 @@ const options = computed(
   })
 );
 </script>
-
-<style lang="scss" module>
-.chartTooltip {
-  font-family: var(--font-family);
-  color: var(--c-primary-text);
-  background: var(--c-primary);
-}
-</style>

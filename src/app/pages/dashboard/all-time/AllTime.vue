@@ -31,6 +31,7 @@
 <script lang="ts" setup>
 import AllTimeChart from './AllTimeChart.vue';
 import Currency from '@components/base/currency/Currency.vue';
+import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
 import { useDataStore } from '@store/state';
 import { totals } from '@store/state/utils/budgets';
 import { sum } from '@utils/array/array.ts';
@@ -52,18 +53,14 @@ type Card = {
   onPointerLeave?: () => void;
 };
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
+const { n } = useNumberFormatter();
 const { state } = useDataStore();
 const styles = useCssModule();
 
 const highlight = ref<'income' | 'expenses'>();
 
 const cards = computed((): Card[] => {
-  const percent = new Intl.NumberFormat(locale.value, {
-    style: 'percent',
-    maximumFractionDigits: 2
-  });
-
   const year = new Date().getFullYear();
   const lastYear = state.years.find((v) => v.year === year - 1);
   const currentYear = state.years.find((v) => v.year === year);
@@ -75,17 +72,19 @@ const cards = computed((): Card[] => {
   const allTimeIncome = sum(totals(state.years.flatMap((v) => v.income)));
   const allTimeExpenses = sum(totals(state.years.flatMap((v) => v.expenses)));
 
+  const percent = (v: number) => n(v, { key: 'percent', maximumFractionDigits: 2 });
+
   return [
     {
       title: t('page.dashboard.allTime.yoyIncomeGrowth'),
-      text: lastYear ? percent.format((currentYearIncome - lastYearIncome) / lastYearIncome) : '—',
+      text: lastYear ? percent((currentYearIncome - lastYearIncome) / lastYearIncome) : '—',
       icon: lastYear ? (currentYearIncome > lastYearIncome ? RiArrowUpDoubleLine : RiArrowDownDoubleLine) : undefined,
       iconClass: currentYearIncome > lastYearIncome ? styles.iconSuccess : styles.iconDanger,
       testId: 'yoy-income-growth'
     },
     {
       title: t('page.dashboard.allTime.yoyExpenseGrowth'),
-      text: lastYear ? percent.format((lastYearExpenses - currentYearExpenses) / currentYearExpenses) : '—',
+      text: lastYear ? percent((lastYearExpenses - currentYearExpenses) / currentYearExpenses) : '—',
       icon: lastYear
         ? lastYearExpenses > currentYearExpenses
           ? RiArrowUpDoubleLine
