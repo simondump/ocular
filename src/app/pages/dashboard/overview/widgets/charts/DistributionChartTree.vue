@@ -96,7 +96,7 @@ const budgetGroupToNode = (type: 'income' | 'expenses'): TreeMapChartNode => {
         id: uuid(),
         value: deficitAmount,
         name: t('page.dashboard.overview.deficit'),
-        color: color(deficitAmount / total, 'var(--c-danger)'),
+        color: color(0.5, 'var(--c-danger)'),
         label: `${t('page.dashboard.overview.deficit')} (${label(data.value, deficitAmount)})`
       });
     }

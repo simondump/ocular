@@ -100,14 +100,14 @@ const data = computed((): SankeyChartConfig => {
     labels.push({
       id: carryOverSource,
       formatter: (value, type) => `${t('page.dashboard.overview.deficit')} (${format(value, type)})`,
-      color: color(60 * (1 - deficitAmount / props.totalIncome)),
+      color: color(0),
       muted: props.highlight === 'expenses'
     });
 
     labels.push({
       id: carryOverTarget,
       formatter: (value, type) => `${t('page.dashboard.overview.deficit')} (${format(value, type)})`,
-      color: color(60 * (1 - deficitAmount / props.totalIncome)),
+      color: color(0),
       muted: props.highlight === 'expenses'
     });
 
