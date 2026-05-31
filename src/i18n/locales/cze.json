@@ -156,7 +156,9 @@
         "minimumTwoYearsRequired": "Pro porovnání musíte mít alespoň dva roky dat.",
         "upComparedTo": "„{name}“ vzrostlo o {percent} (+{absolute}) ve srovnání s rokem {year}",
         "downComparedTo": "„{name}“ kleslo o {percent} (-{absolute}) ve srovnání s rokem {year}",
-        "sameAs": "„{name}“ stejné jako v roce {year} ({absolute})"
+        "sameAs": "„{name}“ stejné jako v roce {year} ({absolute})",
+        "toggleControls": "Přepnout ovládací prvky",
+        "comparingYearWithYear": "Porovnání {a} s {b}"
       }
     }
   },

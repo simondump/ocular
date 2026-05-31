@@ -156,7 +156,9 @@
         "minimumTwoYearsRequired": "Для сравнения необходимо как минимум два года данных.",
         "upComparedTo": "„{name}“ вырос на {percent} (+{absolute}) по сравнению с {year}",
         "downComparedTo": "„{name}“ снизился на {percent} (-{absolute}) по сравнению с {year}",
-        "sameAs": "„{name}“ такой же, как в {year} ({absolute})"
+        "sameAs": "„{name}“ такой же, как в {year} ({absolute})",
+        "toggleControls": "Показать/скрыть элементы управления",
+        "comparingYearWithYear": "Сравнение {a} с {b}"
       }
     }
   },

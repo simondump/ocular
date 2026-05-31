@@ -156,7 +156,9 @@
         "minimumTwoYearsRequired": "Az összehasonlításhoz legalább két évnyi adat szükséges.",
         "upComparedTo": "„{name}“ {percent} növekedés (+{absolute}) a(z) {year} évhez képest",
         "downComparedTo": "„{name}“ {percent} csökkenés (-{absolute}) a(z) {year} évhez képest",
-        "sameAs": "„{name}“ ugyanannyi, mint {year} évben ({absolute})"
+        "sameAs": "„{name}“ ugyanannyi, mint {year} évben ({absolute})",
+        "toggleControls": "Vezérlők be-/kikapcsolása",
+        "comparingYearWithYear": "{a} összehasonlítása ezzel: {b}"
       }
     }
   },

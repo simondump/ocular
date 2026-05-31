@@ -156,7 +156,9 @@
         "minimumTwoYearsRequired": "比較するには少なくとも2年分のデータが必要です。",
         "upComparedTo": "「{name}」は{year}年と比較して{percent}増加（+{absolute}）",
         "downComparedTo": "「{name}」は{year}年と比較して{percent}減少（-{absolute}）",
-        "sameAs": "「{name}」は{year}年と同じ（{absolute}）"
+        "sameAs": "「{name}」は{year}年と同じ（{absolute}）",
+        "toggleControls": "コントロールの表示/非表示",
+        "comparingYearWithYear": "{a} と {b} を比較"
       }
     }
   },

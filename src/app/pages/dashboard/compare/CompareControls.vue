@@ -1,5 +1,12 @@
 <template>
-  <div :class="[$style.compareControls, classes]">
+  <div :class="[$style.compareControls, { [$style.minified]: minified }, classes]">
+    <Button
+      :tooltip="t('page.dashboard.compare.toggleControls')"
+      :class="$style.contractBtn"
+      :icon="minified ? RiContractUpDownLine : RiExpandUpDownLine"
+      @click="minified = !minified"
+    />
+
     <Select
       v-model="modelValue[0]"
       :class="$style.select"
@@ -13,15 +20,22 @@
       :options="secondOptions"
       :label="t('page.dashboard.compare.againstThisYear')"
     />
+
+    <ComponentTransition>
+      <div v-if="minified" :class="$style.placeholder">
+        <p>{{ t('page.dashboard.compare.comparingYearWithYear', { a: modelValue[0], b: modelValue[1] }) }}</p>
+      </div>
+    </ComponentTransition>
   </div>
 </template>
 
 <script lang="ts" setup>
 import Button from '@components/base/button/Button.vue';
 import Select from '@components/base/select/Select.vue';
+import ComponentTransition from '@components/misc/component-transition/ComponentTransition.vue';
 import { useDataStore } from '@store/state';
-import { RiArrowLeftRightLine } from '@remixicon/vue';
-import { computed } from 'vue';
+import { RiArrowLeftRightLine, RiContractUpDownLine, RiExpandUpDownLine } from '@remixicon/vue';
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { ClassNames } from '@utils/types.ts';
 
@@ -34,7 +48,10 @@ const props = defineProps<{
 const { t } = useI18n();
 const { state } = useDataStore();
 
+const minified = ref(false);
+
 const classes = computed(() => props.class);
+
 const availableYears = computed(() =>
   state.years.map((v) => ({
     id: v.year,
@@ -54,16 +71,52 @@ const switchYears = () => {
 
 <style lang="scss" module>
 .compareControls {
+  position: relative;
   display: flex;
+  background: var(--dialog-background);
   align-items: flex-end;
+  padding: 8px;
+  border-radius: var(--border-radius-m);
+  transition: height var(--transition-s);
+  height: min-content;
   gap: 6px;
+
+  &.minified {
+    height: 36px;
+
+    .select,
+    .switch {
+      opacity: 0;
+    }
+  }
 
   .select {
     min-width: 100px;
+    transition: opacity var(--transition-s);
   }
 
   .switch {
     margin-bottom: 4px;
+    transition: opacity var(--transition-s);
+  }
+}
+
+.contractBtn {
+  align-self: center;
+  margin-right: 10px;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  > p {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-l);
   }
 }
 </style>

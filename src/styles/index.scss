@@ -3,6 +3,10 @@
 @use 'reset';
 @use 'globals';
 
+:root {
+  interpolate-size: allow-keywords;
+}
+
 html, body, #app {
   width: 100%;
   height: 100%;

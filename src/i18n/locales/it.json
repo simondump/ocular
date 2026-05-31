@@ -156,7 +156,9 @@
         "minimumTwoYearsRequired": "Devi avere almeno due anni di dati da confrontare.",
         "upComparedTo": "„{name}“ in aumento del {percent} (+{absolute}) rispetto al {year}",
         "downComparedTo": "„{name}“ in calo del {percent} (-{absolute}) rispetto al {year}",
-        "sameAs": "„{name}“ uguale al {year} ({absolute})"
+        "sameAs": "„{name}“ uguale al {year} ({absolute})",
+        "toggleControls": "Mostra/nascondi controlli",
+        "comparingYearWithYear": "Confronto tra {a} e {b}"
       }
     }
   },

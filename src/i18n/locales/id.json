@@ -156,7 +156,9 @@
         "minimumTwoYearsRequired": "Anda harus memiliki setidaknya dua tahun data untuk dibandingkan.",
         "upComparedTo": "„{name}“ naik {percent} (+{absolute}) dibandingkan {year}",
         "downComparedTo": "„{name}“ turun {percent} (-{absolute}) dibandingkan {year}",
-        "sameAs": "„{name}“ sama seperti pada {year} ({absolute})"
+        "sameAs": "„{name}“ sama seperti pada {year} ({absolute})",
+        "toggleControls": "Tampilkan/sembunyikan kontrol",
+        "comparingYearWithYear": "Membandingkan {a} dengan {b}"
       }
     }
   },

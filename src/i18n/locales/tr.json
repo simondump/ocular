@@ -156,7 +156,9 @@
         "minimumTwoYearsRequired": "Karşılaştırma yapmak için en az iki yıllık veriye sahip olmalısınız.",
         "upComparedTo": "„{name}“, {year} yılına kıyasla {percent} arttı (+{absolute})",
         "downComparedTo": "„{name}“, {year} yılına kıyasla {percent} azaldı (-{absolute})",
-        "sameAs": "„{name}“, {year} yılı ile aynı ({absolute})"
+        "sameAs": "„{name}“, {year} yılı ile aynı ({absolute})",
+        "toggleControls": "Kontrolleri aç/kapat",
+        "comparingYearWithYear": "{a} ile {b} karşılaştırılıyor"
       }
     }
   },

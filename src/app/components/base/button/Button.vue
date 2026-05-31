@@ -8,12 +8,16 @@
     :type="type"
     @click="emit('click', $event)"
   >
-    <component :is="icon" v-if="icon" :class="[$style.icon, iconClass]" />
+    <ComponentTransition>
+      <component :is="icon" v-if="icon" :class="[$style.icon, iconClass]" />
+    </ComponentTransition>
+
     <span v-if="text" :class="$style.text">{{ text }}</span>
   </button>
 </template>
 
 <script lang="ts" setup>
+import ComponentTransition from '@components/misc/component-transition/ComponentTransition.vue';
 import { useThemeStyles } from '@composables/theme-styles/useThemeStyles.ts';
 import { computed, useCssModule } from 'vue';
 import type { Color } from '@composables/theme-styles/useThemeStyles.ts';
