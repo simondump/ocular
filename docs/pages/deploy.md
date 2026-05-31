@@ -5,10 +5,6 @@ outline: deep
 # How to Deploy
 
 > [!NOTE]
-> This deployment as well as v2 are still fairly new ✨
-> If you have any questions or something's missing, feel free to [open an issue](https://github.com/simonwep/ocular/issues).
-> For deploying Ocular [Docker](https://docs.docker.com/engine/install/) is required.
->
 > Running `v1`? Head over to the [migration guide](migrating.md) to update to `v2`!
 >
 > Don't want to deploy it yourself?

@@ -11,13 +11,14 @@ Its goal is **not** to track individual expenses, work with multiple currencies 
 
 If you are not sure if it's something for you, check out the [demo](https://simonwep.github.io/ocular/demo#demo).
 
-This app comes with its own backend (by using [genesis](https://github.com/simonwep/genesis)), so the only thing you need to do is to host it somewhere.
-Your data stays on your server and is not shared with anyone else.
+This app comes with its own backend, so the only thing you need to do is to host it somewhere.
+**Your data stays on your server** and is not shared with anyone else!
 
-- 🤖 If you want to install it, head over to [deployment](./deploy.md).
-- 🤨 If you have any questions, check out the [FAQs](./faq.md).
-- 💡 Missing a feature, found a bug or having issues? [Open an issue](https://github.com/simonwep/ocular/issues).
-- 🧑‍💻 Want to contribute? Head over to our [contributing guidelines](https://github.com/simonwep/ocular/blob/main/.github/CONTRIBUTING.md).
+- 🚀 If you want to install it, head over to [deployment](./deploy.md)
+- 🤨 If you have any questions, check out the [FAQs](./faq.md)
+- 💡 Missing a feature, found a bug or having issues? [Open an issue](https://github.com/simonwep/ocular/issues)
+- 🧑‍💻 Want to contribute? Head over to our [contributing guidelines](https://github.com/simonwep/ocular/blob/main/.github/CONTRIBUTING.md)
+- 📄 Want to see what's planned next? Head over to [milestones](https://github.com/simonwep/ocular/milestones)
 
 ## Notable features
 
@@ -40,7 +41,7 @@ Your data stays on your server and is not shared with anyone else.
 
 ## References
 
-Ocular consists of one frontend and a generic backend, both maintained in separate repositories:
+Ocular consists of one frontend and a generic backend, both maintained in separate repositories, but bundled in the final container:
 
 - [ocular](https://github.com/simonwep/ocular) - The main repo with the source of this documentation, the frontend and all you need to work on the app.
 - [genesis](https://github.com/simonwep/genesis) - A generic backend powering the app. Usually no change is needed here as it's kept unrelated to the app itself (but initially made for it).
