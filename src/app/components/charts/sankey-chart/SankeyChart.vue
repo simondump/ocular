@@ -32,6 +32,7 @@ const options = computed((): EChartsOption => {
   const transformedConfig = transformSankeyChart(props.data, props.percentages ? 'percentage' : 'absolute');
 
   return {
+    backgroundColor: 'var(--app-background)',
     animation: false,
     silent: true,
     series: {

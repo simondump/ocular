@@ -44,6 +44,7 @@ const transformNode = ({ color, children, label, ...rest }: TreeMapChartNode): T
 
 const options = computed(
   (): EChartsOption => ({
+    backgroundColor: 'var(--app-background)',
     tooltip: {
       show: true,
       transitionDuration: 0,

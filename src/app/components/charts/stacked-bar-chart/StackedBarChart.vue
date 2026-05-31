@@ -38,6 +38,7 @@ const options = computed((): EChartsOption => {
   const categorySums = props.data.bars.map((bar) => sum(bar.blocks.map((v) => v.value)));
 
   return {
+    backgroundColor: 'var(--app-background)',
     animation: false,
     silent: true,
     grid: {
