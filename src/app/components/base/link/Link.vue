@@ -49,7 +49,7 @@ const props = withDefaults(
   defineProps<{
     class?: ClassNames;
     icon?: Component;
-    size?: 'm' | 's';
+    size?: 'l' | 'm' | 's';
     color?: Color;
     shaped?: boolean;
     inline?: boolean;
@@ -146,6 +146,16 @@ const randomClipPath = computed(() => `path('${scaleSvgPath(randomShape, 30, ele
 
     &:not(.shaped).active {
       color: v-bind('theme.pure.hover');
+    }
+
+    &.l {
+      width: 36px;
+      height: 36px;
+
+      .icon {
+        width: 22px;
+        height: 22px;
+      }
     }
 
     &.m {

@@ -15,6 +15,7 @@
         :testId="`navigation-${button.name}`"
         :class="[$style.btn, button.class]"
         color="primary"
+        :size="appSize === 'mobile' ? 'l' : 'm'"
         :icon="button.icon"
         :to="button.name"
       />
@@ -145,6 +146,7 @@ const buttons = computed((): FrameButton[] => [
 @include globals.onMobileDevices {
   .frame {
     flex-direction: column-reverse;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   .panes {
@@ -163,8 +165,8 @@ const buttons = computed((): FrameButton[] => [
     padding: 6px 4px;
 
     .btn {
-      width: 34px;
-      height: 34px;
+      width: 42px;
+      height: 42px;
 
       &.cloud {
         order: 1;
