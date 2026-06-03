@@ -59,6 +59,7 @@ export const migrateSettingsState = createMigrator<SettingsStateV5, Versions>({
         version: 5,
         general: {
           ...from.general,
+          showMinimumFractionDigits: false,
           switchNumberSeparators: false
         }
       })

@@ -2,7 +2,7 @@ import { migrateSettingsState } from './migrator';
 import { useStorage } from '@store/storage/useStorage.ts';
 import { createGlobalState } from '@vueuse/core';
 import { reactive, readonly } from 'vue';
-import type { Mode, SettingsState, Theme } from './types';
+import type { SettingsState } from './types';
 
 export const useSettingsStore = createGlobalState(() => {
   const storage = useStorage();
@@ -18,28 +18,12 @@ export const useSettingsStore = createGlobalState(() => {
   return {
     state: readonly(state),
 
-    setTheme: (theme: Theme): void => {
-      state.appearance.theme = theme;
+    setGeneral: <K extends keyof SettingsState['general']>(key: K, value: SettingsState['general'][K]) => {
+      state.general[key] = value;
     },
 
-    setMode: (mode: Mode): void => {
-      state.appearance.mode = mode;
-    },
-
-    setAnimations: (enable: boolean): void => {
-      state.appearance.animations = enable;
-    },
-
-    setMonthOffset: (offset: number): void => {
-      state.general.monthOffset = offset;
-    },
-
-    setCarryOver: (carryOver: boolean): void => {
-      state.general.carryOver = carryOver;
-    },
-
-    setSwitchNumberSeparators: (switchSeparators: boolean): void => {
-      state.general.switchNumberSeparators = switchSeparators;
+    setAppearance: <K extends keyof SettingsState['appearance']>(key: K, value: SettingsState['appearance'][K]) => {
+      state.appearance[key] = value;
     }
   };
 });

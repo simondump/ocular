@@ -44,6 +44,7 @@ export interface SettingsStateV4 extends MigratableState<4> {
 export interface SettingsStateV5 extends MigratableState<5> {
   general: {
     switchNumberSeparators: boolean;
+    showMinimumFractionDigits: boolean;
     monthOffset: number;
     carryOver: boolean;
   };

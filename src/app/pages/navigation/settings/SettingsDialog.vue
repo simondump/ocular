@@ -23,13 +23,13 @@
         testId="change-month-offset"
         :label="t('navigation.settings.firstMonthOfYear')"
         :options="months"
-        @update:modelValue="setMonthOffset($event as number)"
+        @update:modelValue="setGeneral('monthOffset', $event as number)"
       />
 
       <CheckBox
         :label="t('navigation.settings.showAnimationsAndTransitions')"
         :modelValue="settings.appearance.animations"
-        @update:modelValue="setAnimations"
+        @update:modelValue="setAppearance('animations', $event as boolean)"
       />
 
       <CheckBox
@@ -41,7 +41,19 @@
         "
         testId="switch-number-separators"
         :modelValue="settings.general.switchNumberSeparators"
-        @update:modelValue="setSwitchNumberSeparators"
+        @update:modelValue="setGeneral('switchNumberSeparators', $event as boolean)"
+      />
+
+      <CheckBox
+        :label="
+          t('navigation.settings.showMinimumFractionDigits', {
+            old: n(3.5, { minimumFractionDigits: 0 }),
+            new: n(3.5, { minimumFractionDigits: 2 })
+          })
+        "
+        testId="show-minimum-fraction-digits"
+        :modelValue="settings.general.showMinimumFractionDigits"
+        @update:modelValue="setGeneral('showMinimumFractionDigits', $event as boolean)"
       />
 
       <CheckBox
@@ -49,7 +61,7 @@
         :subLabel="t('navigation.settings.carryOverNetSavingsInfo')"
         :modelValue="settings.general.carryOver"
         testId="carry-over-net-savings"
-        @update:modelValue="setCarryOver"
+        @update:modelValue="setGeneral('carryOver', $event as boolean)"
       />
     </div>
   </Dialog>
@@ -81,7 +93,7 @@ defineProps<{
 
 const { n } = useNumberFormatter();
 const { t, locale } = useI18n();
-const { setMonthOffset, setCarryOver, setAnimations, setSwitchNumberSeparators, state: settings } = useSettingsStore();
+const { setAppearance, setGeneral, state: settings } = useSettingsStore();
 const { changeCurrency, changeLocale, state } = useDataStore();
 const currencyCodes = useAvailableCurrencyCodes(() => [state.currency]);
 const monthNames = useMonthNames();

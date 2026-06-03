@@ -96,7 +96,8 @@
       "carryOverNetSavings": "Riporta risparmi netti",
       "carryOverNetSavingsInfo": "Se attivato, il saldo netto di fine anno verrà riportato come saldo iniziale dell'anno successivo.",
       "showAnimationsAndTransitions": "Mostra animazioni e transizioni",
-      "switchNumberSeparators": "Cambia separatori ({new} ↔ {old})"
+      "switchNumberSeparators": "Cambia separatori ({old} ↔ {new})",
+      "showMinimumFractionDigits": "Mostra sempre due cifre decimali ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "Aggiorna l'app"

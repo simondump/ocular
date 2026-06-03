@@ -4,7 +4,7 @@ import { createGlobalState } from '@vueuse/core';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-type FormattingOptions = Omit<Intl.NumberFormatOptions, 'style'> & {
+export type FormattingOptions = Omit<Intl.NumberFormatOptions, 'style'> & {
   key?: 'currency' | 'percent' | 'blank';
   switchNumberSeparators?: boolean;
 };

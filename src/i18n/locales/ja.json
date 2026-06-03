@@ -96,7 +96,8 @@
       "carryOverNetSavings": "純貯蓄を繰り越す",
       "carryOverNetSavingsInfo": "有効にすると、前年の純貯蓄が翌年に繰り越されます。",
       "showAnimationsAndTransitions": "アニメーションとトランジションを表示",
-      "switchNumberSeparators": "区切り記号を切り替え: {old} ではなく {new}"
+      "switchNumberSeparators": "区切り記号を切り替え: {old} ではなく {new}",
+      "showMinimumFractionDigits": "常に小数点以下2桁を表示 ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "アプリを更新"

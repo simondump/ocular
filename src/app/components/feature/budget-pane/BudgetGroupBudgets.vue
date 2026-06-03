@@ -121,6 +121,7 @@ defineExpose({
 .meta {
   font-size: var(--input-field-font-size);
   font-weight: var(--font-weight-m);
+  text-align: right;
   padding: 0 10px;
 
   &.bold {

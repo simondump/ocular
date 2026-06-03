@@ -96,7 +96,8 @@
       "carryOverNetSavings": "Carregar economias líquidas",
       "carryOverNetSavingsInfo": "Se ativado, o saldo final do ano anterior será adicionado ao saldo inicial do ano atual.",
       "showAnimationsAndTransitions": "Mostrar animações e transições",
-      "switchNumberSeparators": "Alternar separadores ({new} ↔ {old})"
+      "switchNumberSeparators": "Alternar separadores ({old} ↔ {new})",
+      "showMinimumFractionDigits": "Sempre mostrar duas casas decimais ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "Atualizar aplicativo"

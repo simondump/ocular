@@ -96,7 +96,8 @@
       "carryOverNetSavings": "Nettó megtakarítások átvitele",
       "carryOverNetSavingsInfo": "Ha a nettó megtakarításokat átvisszük az új évre, akkor az előző év záróegyenlegét az új év első hónapjában a nettó megtakarításokhoz adja hozzá.",
       "showAnimationsAndTransitions": "Animációk és átmenetek megjelenítése",
-      "switchNumberSeparators": "Elválasztók váltása ({new} ↔ {old}) helyett"
+      "switchNumberSeparators": "Elválasztók váltása ({old} ↔ {new}) helyett",
+      "showMinimumFractionDigits": "Mindig két tizedesjegy megjelenítése ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "Gyakorlatilag frissítve"

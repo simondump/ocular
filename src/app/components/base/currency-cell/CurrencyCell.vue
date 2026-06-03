@@ -16,6 +16,7 @@
 
 <script lang="ts" setup>
 import { useNumberFormatter } from '@composables/number-formatter/useNumberFormatter.ts';
+import { useSettingsStore } from '@store/settings';
 import { evalMathExpression } from '@utils/eval-math-expression/evalMathExpression.ts';
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 
@@ -37,9 +38,16 @@ const focused = ref(false);
 const innerValue = ref<string>();
 const invalid = ref(false);
 const { n, separators } = useNumberFormatter();
+const { state: settings } = useSettingsStore();
 
 const value = computed(() =>
-  invalid.value || focused.value ? innerValue.value : modelValue.value ? n(modelValue.value) : innerValue.value
+  invalid.value || focused.value
+    ? innerValue.value
+    : modelValue.value
+      ? n(modelValue.value, {
+          minimumFractionDigits: settings.general.showMinimumFractionDigits ? 2 : 0
+        })
+      : innerValue.value
 );
 
 const keydown = (e: KeyboardEvent) => {
@@ -97,6 +105,7 @@ defineExpose({ input });
   all: unset;
   display: inline-flex;
   align-items: center;
+  text-align: right;
   height: 100%;
   width: 100%;
   font-size: var(--input-field-font-size);

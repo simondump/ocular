@@ -96,7 +96,8 @@
       "carryOverNetSavings": "Přenést čisté úspory",
       "carryOverNetSavingsInfo": "Pokud je povoleno, čisté úspory se přenesou do následujícího roku.",
       "showAnimationsAndTransitions": "Zobrazit animace a přechody",
-      "switchNumberSeparators": "Přepnout oddělovače ({new} ↔ {old})"
+      "switchNumberSeparators": "Přepnout oddělovače ({old} ↔ {new})",
+      "showMinimumFractionDigits": "Vždy zobrazovat dvě desetinná místa ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "Aktualizovat aplikaci"

@@ -32,7 +32,7 @@
       :key="index"
       :testId="`month-${index}-total`"
       :value="value"
-      :class="[$style.sum, $style.totals]"
+      :class="[$style.sum, $style.value, $style.totals]"
     />
     <span />
     <span />
@@ -125,7 +125,11 @@ const totals = computed(() => {
 .sum {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-l);
-  padding-right: 10px;
+  padding-right: 5px;
+
+  &.value {
+    text-align: right;
+  }
 
   &.totals {
     margin-left: 5px;
@@ -135,6 +139,7 @@ const totals = computed(() => {
 .month {
   position: sticky;
   background: var(--app-background);
+  text-align: right;
   height: 24px;
   top: 0;
 

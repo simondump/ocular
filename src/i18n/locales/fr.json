@@ -96,7 +96,8 @@
       "carryOverNetSavings": "Reporter les économies nettes",
       "carryOverNetSavingsInfo": "Si activé, les économies nettes de l'année précédente seront reportées à l'année suivante.",
       "showAnimationsAndTransitions": "Afficher les animations et transitions",
-      "switchNumberSeparators": "Changer les séparateurs ({new} ↔ {old})"
+      "switchNumberSeparators": "Changer les séparateurs ({old} ↔ {new})",
+      "showMinimumFractionDigits": "Toujours afficher deux chiffres après la virgule ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "Mettre à jour l'application"

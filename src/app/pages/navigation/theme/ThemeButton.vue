@@ -25,7 +25,7 @@ const props = defineProps<{
   class?: ClassNames;
 }>();
 
-const { state, setTheme } = useSettingsStore();
+const { state, setAppearance } = useSettingsStore();
 const { t } = useI18n();
 
 const icon = computed((): Component => (state.appearance.theme === 'light' ? RiSunFill : RiMoonFill));
@@ -82,7 +82,7 @@ const toggle = async () => {
 
   // Fallback for browsers that do not support View Transitions API
   if (!('startViewTransition' in document)) {
-    setTheme(newTheme);
+    setAppearance('theme', newTheme);
     return;
   }
 
@@ -93,7 +93,7 @@ const toggle = async () => {
   viewTransition.value = document.startViewTransition();
   await viewTransition.value.ready;
 
-  setTheme(newTheme);
+  setAppearance('theme', newTheme);
   await viewTransition.value.finished;
 
   styleSheet.value.remove();

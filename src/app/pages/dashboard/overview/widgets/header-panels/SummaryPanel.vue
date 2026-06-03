@@ -24,7 +24,12 @@
 
           <template v-else>
             <h2 :data-testid="`${testId}-title`" :class="$style.head">{{ title }}</h2>
-            <Currency :class="$style.title" :testId="`${testId}-value`" :value="value" />
+            <Currency
+              :formatting="{ minimumFractionDigits: 0, maximumFractionDigits: 0, roundingMode: 'trunc' }"
+              :class="$style.title"
+              :testId="`${testId}-value`"
+              :value="value"
+            />
             <span v-if="subTitle || $slots.subTitle" :data-testid="`${testId}-sub`" :class="$style.subTitle">
               <span v-if="subTitle">{{ subTitle }}</span>
               <slot name="subTitle" />

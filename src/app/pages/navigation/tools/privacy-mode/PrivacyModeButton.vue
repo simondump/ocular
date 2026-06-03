@@ -13,9 +13,9 @@ import { RiEyeCloseLine, RiEyeLine } from '@remixicon/vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { setMode, state } = useSettingsStore();
+const { setAppearance, state } = useSettingsStore();
 const { t } = useI18n();
 
 const privacyMode = computed(() => state.appearance.mode === 'privacy');
-const togglePrivacyMode = () => setMode(privacyMode.value ? 'normal' : 'privacy');
+const togglePrivacyMode = () => setAppearance('mode', privacyMode.value ? 'normal' : 'privacy');
 </script>

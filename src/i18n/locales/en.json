@@ -96,7 +96,8 @@
       "carryOverNetSavings": "Carry over net savings",
       "carryOverNetSavingsInfo": "If enabled, the net savings from the previous year will be carried over to the next year.",
       "showAnimationsAndTransitions": "Show animations and transitions",
-      "switchNumberSeparators": "Switch separators ({new} ↔ {old})"
+      "switchNumberSeparators": "Switch separators ({old} ↔ {new})",
+      "showMinimumFractionDigits": "Always show two fraction digits ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "Update app"

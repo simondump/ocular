@@ -96,7 +96,8 @@
       "carryOverNetSavings": "Nettoersparnisse übertragen",
       "carryOverNetSavingsInfo": "Wenn diese Option aktiviert ist, werden die Nettoersparnisse des Vorjahres in das neue Jahr übertragen.",
       "showAnimationsAndTransitions": "Animationen und Übergänge anzeigen",
-      "switchNumberSeparators": "Trennzeichen wechseln ({new} ↔ {old})"
+      "switchNumberSeparators": "Trennzeichen wechseln ({old} ↔ {new})",
+      "showMinimumFractionDigits": "Immer zwei Nachkommastellen anzeigen ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "App aktualisieren"

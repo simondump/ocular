@@ -96,7 +96,8 @@
       "carryOverNetSavings": "Pertahankan saldo tabungan bersih",
       "carryOverNetSavingsInfo": "Jika diaktifkan, saldo tabungan bersih dari tahun sebelumnya akan dibawa ke tahun berikutnya",
       "showAnimationsAndTransitions": "Tampilkan animasi dan transisi",
-      "switchNumberSeparators": "Ganti pemisah ({new} ↔ {old})"
+      "switchNumberSeparators": "Ganti pemisah ({old} ↔ {new})",
+      "showMinimumFractionDigits": "Selalu tampilkan dua digit pecahan ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "Perbarui aplikasi"

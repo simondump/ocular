@@ -96,7 +96,8 @@
       "carryOverNetSavings": "Przeniesienie oszczędności netto",
       "carryOverNetSavingsInfo": "Przeniesienie oszczędności netto z poprzedniego roku do bieżącego roku.",
       "showAnimationsAndTransitions": "Pokaż animacje i przejścia",
-      "switchNumberSeparators": "Przełącz separatory ({new} ↔ {old})"
+      "switchNumberSeparators": "Przełącz separatory ({old} ↔ {new})",
+      "showMinimumFractionDigits": "Zawsze pokazuj dwie cyfry po przecinku ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "Zaktualizuj aplikację"

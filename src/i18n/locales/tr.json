@@ -96,7 +96,8 @@
       "carryOverNetSavings": "Net Tasarrufları Taşı",
       "carryOverNetSavingsInfo": "Etkinleştirilirse, net tasarruflar bir sonraki yıla taşınır.",
       "showAnimationsAndTransitions": "Animasyonları ve geçişleri göster",
-      "switchNumberSeparators": "Ayırıcıları değiştir: {old} yerine {new}"
+      "switchNumberSeparators": "Ayırıcıları değiştir: {old} yerine {new}",
+      "showMinimumFractionDigits": "Her zaman iki ondalık basamak göster ({old} ↔ {new})"
     },
     "update": {
       "updateApp": "Güncelleme uygulaması"

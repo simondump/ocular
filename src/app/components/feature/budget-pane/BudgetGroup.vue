@@ -177,6 +177,7 @@ defineExpose({
   font-size: var(--input-field-font-size);
   font-weight: var(--font-weight-m);
   padding: 0 10px;
+  text-align: right;
 
   &.bold {
     position: relative;
@@ -193,6 +194,7 @@ defineExpose({
   padding: 5px 0;
   background: var(--grid-header-background);
   color: var(--grid-header-text);
+  text-align: right;
 
   > span {
     display: inline-block;
@@ -202,6 +204,7 @@ defineExpose({
   &.start {
     border-top-left-radius: var(--border-radius-l);
     border-bottom-left-radius: var(--border-radius-l);
+    text-align: left;
     padding-left: 8px;
     cursor: text;
   }
