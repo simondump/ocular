@@ -121,26 +121,26 @@ test('Switch number separators and round correctly', async ({ page }) => {
   await page.getByTestId('navigation-income').click();
   await page.getByTestId('group-0-budget-0-0').fill('1234.56');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('€1,234.56');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('1,234.56');
 
   await page.getByTestId('navigation-settings').click();
   await page.getByTestId('switch-number-separators').check();
   await page.getByTestId('close-dialog').click();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('€1.234,56');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('1.234,56');
 
   await page.getByTestId('group-0-budget-0-0').focus();
   await page.getByTestId('group-0-budget-0-0').fill('1,236');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('€1,24');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('1,24');
 
   await page.getByTestId('navigation-settings').click();
   await page.getByTestId('change-locale').click();
   await page.getByTestId('change-locale-de').click();
   await page.getByTestId('close-dialog').click();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('1.24 €');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('1.24');
 
   await page.getByTestId('group-0-budget-0-0').focus();
   await page.getByTestId('group-0-budget-0-0').fill('1,236');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('1,236 €');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('1,236');
 });

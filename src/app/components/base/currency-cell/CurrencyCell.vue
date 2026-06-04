@@ -45,6 +45,7 @@ const value = computed(() =>
     ? innerValue.value
     : modelValue.value
       ? n(modelValue.value, {
+          key: 'blank',
           minimumFractionDigits: settings.general.showMinimumFractionDigits ? 2 : 0
         })
       : innerValue.value
@@ -90,7 +91,9 @@ watch(focused, (value) => {
   }
 
   try {
-    modelValue.value = innerValue.value ? evalMathExpression(innerValue.value, separators.value) : 0;
+    modelValue.value = innerValue.value
+      ? Math.round(evalMathExpression(innerValue.value, separators.value) * 100) / 100
+      : 0;
     invalid.value = false;
   } catch (_) {
     invalid.value = true;

@@ -37,25 +37,25 @@ test('Evaluate expressions correctly without errors', async ({ page }) => {
   // Simple expressions
   await page.getByTestId('group-0-budget-0-0').fill('1000 * 2000');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('€2,000,000');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('2,000,000');
 
   await page.getByTestId('group-0-budget-0-0').fill('1000 + 2000');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('€3,000');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('3,000');
 
   await page.getByTestId('group-0-budget-0-0').fill('500 - 50');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('€450');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('450');
 
   // Support comma and dot notation
   await page.getByTestId('group-0-budget-0-0').fill('1,000 + 2.000');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('€1,002');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('1,002');
 
   // Support parentheses
   await page.getByTestId('group-0-budget-0-0').fill('(1000 + 2000) * 2');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('€6,000');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('6,000');
 
   // Do nothing if invalid
   await page.getByTestId('group-0-budget-0-0').fill('1000 + 2000 *');
@@ -82,7 +82,7 @@ test('Localizes numbers and parse them correctly', async ({ page }) => {
 
   await page.getByTestId('group-0-budget-0-0').fill('1.5 * 30,000');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('€45,000');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('45,000');
 
   // Test for german
   await page.getByTestId('navigation-settings').click();
@@ -92,7 +92,7 @@ test('Localizes numbers and parse them correctly', async ({ page }) => {
 
   await page.getByTestId('group-0-budget-0-0').fill('1,5 * 30.000');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('45.000 €');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('45.000');
 
   // Test for italian
   await page.getByTestId('navigation-settings').click();
@@ -102,7 +102,7 @@ test('Localizes numbers and parse them correctly', async ({ page }) => {
 
   await page.getByTestId('group-0-budget-0-0').fill('1,5 + 1,5');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('3 €');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('3');
 });
 
 test('Keep numbers correctly localized between languages', async ({ page }) => {
@@ -122,7 +122,7 @@ test('Keep numbers correctly localized between languages', async ({ page }) => {
 
   await page.getByTestId('group-0-budget-0-0').fill('1,5 + 30');
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('31,5 €');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('31,5');
 
   await page.getByTestId('group-0-budget-0-0').focus();
   await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('31,5');
@@ -136,7 +136,7 @@ test('Keep numbers correctly localized between languages', async ({ page }) => {
   await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('31.5');
 
   await page.getByTestId('group-0-budget-0-0').blur();
-  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('€31.5');
+  await expect(page.getByTestId('group-0-budget-0-0')).toHaveValue('31.5');
 });
 
 test('Navigate budgets using the keyboard', async ({ page }) => {
