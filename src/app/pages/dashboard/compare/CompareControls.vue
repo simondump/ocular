@@ -1,12 +1,5 @@
 <template>
   <div :class="[$style.compareControls, { [$style.minified]: minified }, classes]">
-    <Button
-      :tooltip="t('page.dashboard.compare.toggleControls')"
-      :class="$style.contractBtn"
-      :icon="minified ? RiContractUpDownLine : RiExpandUpDownLine"
-      @click="minified = !minified"
-    />
-
     <Select
       v-model="modelValue[0]"
       :class="$style.select"
@@ -19,6 +12,13 @@
       :class="$style.select"
       :options="secondOptions"
       :label="t('page.dashboard.compare.againstThisYear')"
+    />
+
+    <Button
+      :tooltip="t('page.dashboard.compare.toggleControls')"
+      :class="$style.contractBtn"
+      :icon="minified ? RiContractUpDownLine : RiExpandUpDownLine"
+      @click="minified = !minified"
     />
 
     <ComponentTransition>
@@ -35,7 +35,8 @@ import Select from '@components/base/select/Select.vue';
 import ComponentTransition from '@components/misc/component-transition/ComponentTransition.vue';
 import { useDataStore } from '@store/state';
 import { RiArrowLeftRightLine, RiContractUpDownLine, RiExpandUpDownLine } from '@remixicon/vue';
-import { computed, ref } from 'vue';
+import { useLocalStorage } from '@vueuse/core';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { ClassNames } from '@utils/types.ts';
 
@@ -48,7 +49,7 @@ const props = defineProps<{
 const { t } = useI18n();
 const { state } = useDataStore();
 
-const minified = ref(false);
+const minified = useLocalStorage('dashboard/minify-compare-controls', false);
 
 const classes = computed(() => props.class);
 
@@ -75,14 +76,15 @@ const switchYears = () => {
   display: flex;
   background: var(--dialog-background);
   align-items: flex-end;
-  padding: 8px;
+  padding: 8px 16px;
   border-radius: var(--border-radius-m);
-  transition: height var(--transition-s);
+  transition: all var(--transition-s);
   height: min-content;
   gap: 6px;
 
   &.minified {
     height: 36px;
+    padding: 8px 8px;
 
     .select,
     .switch {
@@ -103,7 +105,7 @@ const switchYears = () => {
 
 .contractBtn {
   align-self: center;
-  margin-right: 10px;
+  margin-left: auto;
 }
 
 .placeholder {

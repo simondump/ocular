@@ -109,7 +109,7 @@ const data = computed((): TreeMapChartConfig => {
 
       if (otherSum === node.value) {
         return t('page.dashboard.compare.sameAs', {
-          absolute: n(node.value - otherSum),
+          absolute: n(node.value),
           name: node.name,
           year: other.year
         });
